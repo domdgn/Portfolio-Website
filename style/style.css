@@ -396,9 +396,31 @@ h2 {
     padding: 5px;
 }
 
+.project-article li {
+    color: #26c6da;
+    list-style-type: none;;
+}
+
+.project-article li span {
+    font-weight: bold;
+    font-size: larger;
+    color: #38bdf8;
+}
+
+.references {
+    color: #334155;
+}
+
 .project-article a {
     text-decoration: none;
     color: #38bdf8;
+}
+
+.finalimg {
+    width: 50%; 
+    border-radius: 8px; 
+    margin: 20px 0;
+    box-shadow: 0 10px 50px #010d13;
 }
 
 /* Create a flex container for images */
@@ -411,20 +433,23 @@ h2 {
 /* Container for the group of images */
 .image-group {
     display: flex; /* Use flexbox to arrange images in a row */
-    flex-wrap: wrap; /* Allow images to wrap onto the next line if necessary */
+    align-items: flex-start;
     justify-content: space-between; /* Space out the images evenly */
-    align-items: flex-start; /* Align items at the start (top) to prevent stretching */
+    gap: 10px; /* Use gap to create space between flex items */
 }
 
 /* Individual images within the group */
 .image-group img {
     max-width: 25%; /* Prevent images from exceeding the width of their container */
     height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Rounded corners */
-    margin: 20px; /* Increase space around each image */
-    flex: 1 1 calc(25% - 40px); /* Allow images to take up to 25% of the row, minus margins */
+    border-radius: 8px;/* Rounded corners */
 }
 
+.image-group.previz img {
+    width: 100%; /* Make images responsive to their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+}
 .project-article img {
     margin: 20px 0;
 }
@@ -432,6 +457,22 @@ h2 {
 .project-article p span {
     font-weight: bold;
     color: #f9a825;
+}
+
+/* Container for the group of images */
+.image-group-new {
+    display: flex; /* Use flexbox to arrange images in a row */
+    justify-content: space-between; /* Space out the images evenly */
+    align-items: flex-start; /* Align items at the start (top) */
+    flex-wrap: wrap; /* Allow images to wrap onto the next line if necessary */
+}
+
+/* Individual images within the group */
+.image-group-new img {
+    width: 500px; /* Set a fixed width for images */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px; /* Space around each image */
 }
 
 /* styles for mobile */

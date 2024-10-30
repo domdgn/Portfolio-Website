@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D World Practice Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo"><em>DD</em></a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="/index.html#projects">Projects</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 80px auto; padding: 20px;">
+        <article class="project-article">
+            <h1>Individual Game/3D World Practice</h1>
+
+            <section>
+                <h2 class="overview">Overview</h2>
+                <p><strong>Stylised 3D diorama modelled in Blender and imported into Unity for use as a game environment</strong></p>
+                <p><span>Date Started:</span> 26th September 2024</p>
+                <p><span>Software Used:</span> Unity, Blender</p>
+                <img src="https://placecats.com/1000/1000" alt="Project Overview" style="width: 50%; border-radius: 8px; margin: 20px 0;">
+            </section>
+            <br>
+            <section>
+                <h2>Introduction & Goal</h2>
+                <p>This is my first individual project that I worked on during my enrolment at the <span>University of Winchester</span>. The brief for the project involved creating an original environment or diorama, in any 3d modelling software, that can be used in Unity to display the ability to design and create a game environment.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>Concept and Inspiration</h2>
+                <p>While the brief was being delivered, many ideas came into my head, some of which I had been wanting to create for a long time. I decided to draw inspiration from many artists such as <a href="https://www.aendom.com/">Alex Treviño</a>, <a href="https://www.instagram.com/ianhubertz/">Ian Hubert</a>, <a href="https://polygonrunway.com/">Polygon Runway</a> and <a href="https://www.instagram.com/gcgameart/">Grace Collett</a>.</p>
+                <br>
+                <p>My methodology to developing my inspiration first involved gathering reference images, of artwork I liked, and deciding on which artstyle I should develop into my project. I listed what I liked about each artstyle, and why I think they would suit my project. At the same time as this, I was writing down ideas for the scene that I thought of during my research for inspiration and style, so I didn't forget them and so I could weigh the pros and cons of each scene.</p>
+                <br>
+                <p>My scene ideas and inspiration images were gathered together using Miro.</p>
+
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<h2>Scene Ideas</h3>
+<b>city centre, tall buildings, circular park, homely, swingset</b>
+    + calming, simpler blocking out 
+    + showcases building design
+    - large scale, perhaps too much detail to manage for a short project
+
+<b>isolated field, pond, fishing, small wooden shack, character appears small in view</b>
+    + focus on environment rather than character design
+    + interesting to me 
+    + particle system for grass, trees
+    + can be developed in both high and low fidelity art styles
+    + environmental storytelling
+    
+<b>isometric big city, heavily stylised cars driving</b>
+    + satisfying render
+    + keyframed or procedural car movement
+    + explorable from ground-view in unity
+    - difficult to model detailed buildings & cars
+    - doesn't show a large variety of materials and structures
+    - not many organic elements
+
+<b>dark, ian-hubert-esque but low-poly alleyway, dystopian neon lighting, character's stall selling something</b>
+    + interesting to me
+    - high-fidelity, difficult to manage in a short time-frame
+    - big scope
+
+</pre>
+
+                <img src="assets/diorama/artstyle_inspiration.jpg" alt="Artstyle Research" style="width: 750px; border-radius: 8px; margin: 20px 0;">
+                <br><br>
+                <p>After spending some time on this, I decided that my scene would be created using an artstyle that is a mixture of what is shown in the clay-styled references, and the low-poly reference: a low-fidelity, toon-like stylised diorama, with low-poly assets, but with a clay feel.</p>
+                <br>
+                <p>I then developed my ideas into my <strong>final concept</strong>: an isolated farmer's cottage with a pier leading into the middle of a pond. The farmer is sat alone with their legs hanging off of the pier, while fishing.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>Tools and Software</h2>
+                
+                <h3>Blender</h3>
+                <p>I chose to use Blender as my primary 3D modelling and shading workspace, as I have a lot of experience working in the Blender workspace, since the release of Blender v2.8, and I feel comfortable using the modelling and shading tools provided. Coming into this project, I knew there would have been a lot of techniques used that I have never learned before, so I was eager to improve and expand my skillset along the way, and learn many techniques that are transferrable to other 3D modelling programs.</p>
+                
+                <h3>Unity</h3>
+                <p>A requirement for the brief was that the resulting environment was imported into Unity, and explorable by a player character. Therefore, I chose to use Unity 2022.3.47f1, as that was the most recent LTS package at the time of starting the project. I was familiar with the program before this project, however I expected to run into a lot of challenges and roadblocks along the way, learning how to navigate them and result in an expanded skillset, suitable for game development.</p>
+                
+                <h3>Miro</h3>
+                <p>Miro is an online interactive whiteboard/note-taking app, used widely in industry and I chose to use it for the first time with this project, to gather my ideas and inspiration in a manageable and shareable format, ideal for showing how and why I developed my ideas.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>Modeling Process</h2>
+                
+                <h3>Step 1: Initial Concept and Sketches</h3>
+                <p>To begin sketching and expanding on my concept, I first researched real-world examples of buildings and piers in a similar setting and style to what I desired and envisioned.</p>
+                <div class="image-group">
+                    <img src="https://coolstays.imgix.net/197179.jpg" alt="Reference 1">
+                    <img src="https://files.holidaycottages.co.uk/docs/lakelandcottagecompany/images/guides/drivers/WL-UW-Guides_Driver.jpg?width=800" alt="Reference 2">
+                    <img src="https://live.staticflickr.com/8004/28992106205_df4efec718_b.jpg" alt="Reference 3">
+                    <img src="https://www.timberhomeliving.com/wp-content/uploads/2011/03/1-timber-frame-home-ext-028.jpg" alt="Reference 5">
+                </div>
+
+                <p>I then used the references to quickly sketch a base layout for my scene, by using the grease pencil in Blender, and sketching a very simple layout in the camera viewport. I spent a short amount of time on this sketch, I refined it until I was happy with the composition, and then quickly moved onto blocking out - as I find blocking out to be a much better way at developing and prototyping my ideas in a 3D space.</p>
+
+                <img src="assets/diorama/greasepencil_sketch.jpg" alt="Grease Pencil Sketch" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <h3>Step 2: Blocking Out the Environment</h3>
+                <p>After I was happy with the overall composition, I quickly started blocking out the scene. My favourite way to create ideas is to rapidly ideate, sketch, block out, and iterate. This methodology helps me create my best possible ideas, and follows conventions in Design Thinking practice.</p>
+
+                <p>To block out the scene, I kept my sketch and my references open in a Miro whiteboard on my second monitor, and placed primitives in the viewport to establish the relative size, location, and form of the main objects in the scene. I didn't adhere strictly to the sketch, as I wanted to ensure the piece could successfully evoke a feeling of isolation while also giving the feeling of looking <em>into</em> a small piece of another world, all in an aesthetically pleasing form.</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>Primitives</strong></p>
+                    <p>Basic 3D geometric shapes that can be used as building blocks to create more complex shapes, for example: cubes, spheres, cylinders and planes.</p>
+                </div>
+
+                <p>I added basic shaders to my block out, to better represent the world I was creating.</p>
+
+                <img src="assets/diorama/fishing_Blockout1.jpg" alt="Block Out 1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <p>After my first blocking out of the scene, I decided to make some key changes that would influence the overall direction of the project.</p>
+
+                <ul>
+                    <li><strong>Cut out a smaller square from the scene</strong><br>The environment was to be explored in a 3D world, so Having the edges off into the distance with a fixed cut-off would break all sense of it being a section from a lived-in world. My first block out was designed to fit a fixed camera angle, but I reworked it to better fit the brief and expectations of the project.</li>
+                    <li><strong>Moved the primary camera angle</strong><br>The scene draws inspiration from isometric dioramas, so I moved the camera to outside of the scene, looking down. This helped to better establish the feeling of 'looking into' a world.</li>
+                    <li><strong>Built an organic timber frame model for the house</strong><br>I built a timber frame for the house, as my concept involved an old stone cottage with a timber frame, so I quickly threw together what I imagined the base layout of the house to be.</li>
+                </ul>
+
+                <img src="assets/diorama/26.09.png" alt="Block Out Progress" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <img src="assets/diorama/26.09 clay.jpg" alt="Clay Render" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <h3>Step 3: Detailed Modeling</h3>
+                <p>My first stage to beginning the detailed modelling stage was to review the previous block outs, and add notes as to what I would like to see improved and added, to establish a set list of goals and ensure that I could fit everything into the time I had to spend on this project.</p>
+
+                <img src="assets/diorama/26.09 Notes.jpg" alt="Development Notes" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <p>I began by making a new .blend file, and modelling the ground from scratch. I began with a plane which I subdivided, and edited in the Z-axis with proportional editing, to create a smooth, organic hill shape, with a deep area for the water to sit. To create the flat sides, I extruded the outer corners down in the Z-axis, made them level with each other with the keystrokes</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>S, Z, 0</strong><br>Scale, Z - axis, 0</p>
+                </div>
+
+                <p>Then, I used the F key to join them together in to a flat base. Finally, I held the Alt key, and selected the loop around each side, and pressed F again, to fill in each of the four side faces of the ground mesh. This left me with n-gons for the sides, however the mesh is intended to be entirely static, and not deformed, additionally, the wall is completely flat. Therefore, I expected there to be no issue with leaving them as n-gons.</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>N-Gons</strong><br>Polygons with more than four vertices and edges. They are avoided in most cases, as they can cause issues when rendering or deforming a mesh.</p>
+                </div>
+            </section>
+
+            <section>
+                <h2>Shading, Texturing and UV Mapping</h2>
+                <p>Discuss the texturing process, including how you unwrapped the UVs and applied textures to the models.</p>
+            </section>
+
+            <section>
+                <h2>Lighting and Rendering</h2>
+                <p>Outline the lighting setup and rendering process. Mention any techniques used to enhance the visual quality of the environment.</p>
+            </section>
+
+            <section>
+                <h2>Challenges Faced</h2>
+                <p>Describe any challenges encountered during the modeling process and how they were overcome.</p>
+            </section>
+
+            <section>
+                <h2>Final Thoughts</h2>
+                <p>Provide a concluding section with your reflections on the project. Mention what you learned and how it will influence future projects.</p>
+            </section>
+        </article>
+    </main>
+</body>
+</html>

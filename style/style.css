@@ -371,6 +371,68 @@ h2 {
 .tab-contents.active-tab {
     display: block;
 }
+/* PROJECT ARTICLE CSS */
+
+.project-article {
+    text-align: center; /* Centers text content */
+}
+
+.project-article h1,
+.project-article h2,
+.project-article h3 {
+    text-align: center;
+}
+
+.project-article h2 {
+    padding-top: px;
+}
+
+.project-article .overview h2 {
+    padding-top: 0px;
+}
+
+.project-article h1 {
+    font-size: 1.5rem;
+    padding: 5px;
+}
+
+.project-article a {
+    text-decoration: none;
+    color: #38bdf8;
+}
+
+/* Create a flex container for images */
+.project-article section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Container for the group of images */
+.image-group {
+    display: flex; /* Use flexbox to arrange images in a row */
+    flex-wrap: wrap; /* Allow images to wrap onto the next line if necessary */
+    justify-content: space-between; /* Space out the images evenly */
+    align-items: flex-start; /* Align items at the start (top) to prevent stretching */
+}
+
+/* Individual images within the group */
+.image-group img {
+    max-width: 25%; /* Prevent images from exceeding the width of their container */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 8px; /* Rounded corners */
+    margin: 20px; /* Increase space around each image */
+    flex: 1 1 calc(25% - 40px); /* Allow images to take up to 25% of the row, minus margins */
+}
+
+.project-article img {
+    margin: 20px 0;
+}
+
+.project-article p span {
+    font-weight: bold;
+    color: #f9a825;
+}
 
 /* styles for mobile */
 @media (max-width: 768px) {

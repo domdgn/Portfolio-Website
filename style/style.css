@@ -121,6 +121,11 @@ nav {
     color: #f9a825;
 }
 
+.intro .translation {
+    font-weight: lighter;
+    color: #697f9f;
+}
+
 
 .home-image {
     border-radius: 15px;

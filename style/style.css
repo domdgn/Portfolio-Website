@@ -431,12 +431,18 @@ h2 {
     padding: 4px 12px;
     border-radius: 6px;
     border: 1px solid #334155;
+    text-decoration: none;
 }
 
 .project-article h1,
 .project-article h2,
 .project-article h3 {
     text-align: center;
+}
+
+.ominous {
+    text-align: center;
+    color: #334155;
 }
 
 .project-article .responsibilities {
@@ -470,12 +476,23 @@ h2 {
 }
 
 .references {
-    color: #334155;
+    color: #475d7c;
+}
+
+.references a {
+    color: inherit;  /* This will make links inherit the gray color from .references */
+    text-decoration: underline;
 }
 
 .project-article a {
     text-decoration: none;
     color: #38bdf8;
+}
+
+/* Override the project-article link styling for references */
+.references a {
+    color: inherit !important;  /* Force the gray color */
+    text-decoration: underline !important;  /* Force the underline */
 }
 
 .finalimg {

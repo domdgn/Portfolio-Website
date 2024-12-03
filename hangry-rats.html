@@ -6,6 +6,9 @@
     <title>Group Game Project Y1S1</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="styles/atom-one-dark.min.css">
+    <script src="/script/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
 </head>
 <body>
     <header>
@@ -33,130 +36,199 @@
                 <img src="assets/rats/final_placeholder.jpg" alt="Project Overview" class="finalimg">
             </section>
             <br>
+            <h1>Section 1 | Prototype</h1>
             <section>
-                <h2>Introduction & Goal</h2>
+                <h2>1.1 Introduction & Goal</h2>
                 <p>This is a Group Game Project made in Year 1, Semester 1. You play as a chef with the goal of collecting as many ingredients as you can before the enemy rats take them.You can throw cheese to distract the rats and activate buttons.</p>
             </section>
 <br><br>
             <section>
-                <h2>Concept and Inspiration</h2>
+                <h2>1.2 Concept and Inspiration</h2>
                 <p>As a team we initally came together and brainstormed ideas for our project, the only restriction in the brief was that it needs to be rated at or below <span>PEGI 12</span>.</p>
                 <br>
                 <p>We assessed the skills of everyone in the group, and first decided on what art style to produce. Due to the majority of the artists having proficiency in 2D art, we decided that the best option to prevent the risk of not being able to achieve the planned scope was to create a 2D game in a pixel art style.</p>
                 <br>
-                <p>Then, we worked to define what the concept of the game would be. We were comfortable with restricting ourselves to the art style,  and we used <span>Miro</span> to organise our ideas and come up with the final concept of a puzzle platformer themed around cooking. Our first concepts involved the rat enemies being killable, perhaps with a similar mechanic to that of the goombas in Super Mario Bros. However, we deemed animal cruelty as not fitting the brief, and instead decided on a fun and engaging puzzle-platformer game.</p>
+                <p>Then, we worked to define what the concept of the game would be. We were comfortable with restricting ourselves to the art style,  and we used <span>Miro</span> to organise our ideas and come up with the final concept of a puzzle platformer themed around cooking. Our first concepts involved the rat enemies being killable, perhaps with a similar mechanic to that of the goombas in Super Mario Bros. 
+                    <br><br>
+                    However, we deemed animal cruelty as not fitting the brief, and instead decided on a fun and engaging puzzle-platformer game, where instead of being able to crush the rats, you instead can distract them, and you need to do this to activate buttons to progress.
+                    <br><br>
+                    We designed the concept of the game using a whiteboard, <span>[1.2.1]</span> and settled confidently on our project idea.
+                </p>
 
-<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-<h2>Scene Ideas</h3>
-<b>city centre, tall buildings, circular park, homely, swingset</b>
-    + calming, simpler blocking out 
-    + showcases building design
-    - large scale, perhaps too much detail to manage for a short project
 
-<b>isolated field, pond, fishing, small wooden shack, character appears small in view</b>
-    + focus on environment rather than character design
-    + interesting to me 
-    + particle system for grass, trees
-    + can be developed in both high and low fidelity art styles
-    + environmental storytelling
-    
-<b>isometric big city, heavily stylised cars driving</b>
-    + satisfying render
-    + keyframed or procedural car movement
-    + explorable from ground-view in unity
-    - difficult to model detailed buildings & cars
-    - doesn't show a large variety of materials and structures
-    - not many organic elements
-
-<b>dark, ian-hubert-esque but low-poly alleyway, dystopian neon lighting, character's stall selling something</b>
-    + interesting to me
-    - high-fidelity, difficult to manage in a short time-frame
-    - big scope
-
-</pre>
-
-                <img src="assets/diorama/artstyle_inspiration.jpg" alt="Artstyle Research" style="width: 750px; border-radius: 8px; margin: 20px 0;">
-                <br><br>
-                <p>After spending some time on this, I decided that my scene would be created using an artstyle that is a mixture of what is shown in the clay-styled references, and the low-poly reference: a low-fidelity, toon-like stylised diorama, with low-poly assets, but with a clay feel.</p>
+                <img src="assets/rats/whiteboard.jpg" alt="Whiteboard Notes 2.1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <span class="RefNum">1.2.1</span>
                 <br>
-                <p>I then developed my ideas into my <strong>final concept</strong>: an isolated farmer's cottage with a pier leading into the middle of a pond. The farmer is sat alone with their legs hanging off of the pier, while fishing.</p>
+                <p>After spending time on this, as a team we quickly pulled together some reference art and developed what the setting for our game was going to be like:</p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/rats/Ref/ref_art.png" alt="Reference 1">
+                        <div class="RefNum">1.2.2</div>
+                    </figure>
+                    <figure>
+                        <img src="assets/rats/Ref/ref2.jpg" alt="Reference 2">
+                        <div class="RefNum">1.2.3</div>
+                    </figure>
+                    <figure>
+                        <img src="assets/rats/Ref/ref3.jpg" alt="Reference 3">
+                        <div class="RefNum">1.2.4</div>
+                    </figure>
+                </div>
+                <p>We then developed my ideas into my <strong>final setting concept</strong>: various locations, beginning first in a small, artificially lit alleyway, and the game progresses into a brighter, more lively city centre as levels go on.</p>
             </section>
 <br><br>
             <section>
-                <h2>Tools and Software</h2>
-                
-                <h3>Blender</h3>
-                <p>I chose to use Blender as my primary 3D modelling and shading workspace, as I have a lot of experience working in the Blender workspace, since the release of Blender v2.8, and I feel comfortable using the modelling and shading tools provided. Coming into this project, I knew there would have been a lot of techniques used that I have never learned before, so I was eager to improve and expand my skillset along the way, and learn many techniques that are transferrable to other 3D modelling programs.</p>
-                
+                <h2>1.3 Tools and Software</h2>
+
                 <h3>Unity</h3>
-                <p>A requirement for the brief was that the resulting environment was imported into Unity, and explorable by a player character. Therefore, I chose to use Unity 2022.3.47f1, as that was the most recent LTS package at the time of starting the project. I was familiar with the program before this project, however I expected to run into a lot of challenges and roadblocks along the way, learning how to navigate them and result in an expanded skillset, suitable for game development.</p>
+                <p>Myself and Dan Ballem (the other developer on the project) were both already familiar with the 2D development tools in Unity, therefore, we decided it was best - and within scope - to develop the prototype for our game with such tools.</p>
                 
                 <h3>Miro</h3>
-                <p>Miro is an online interactive whiteboard/note-taking app, used widely in industry and I chose to use it for the first time with this project, to gather my ideas and inspiration in a manageable and shareable format, ideal for showing how and why I developed my ideas.</p>
+                <p>Miro is an online interactive whiteboard/note-taking app, used widely in industry and we chose to use it with this project, to gather ideas and inspiration in a manageable and shareable format, ideal for showing how and why we developed our ideas.</p>
+
+                <h3>Aseprite & Libresprite</h3>
+                <p>The artists used mainly Aseprite and Libresprite. These are both pixel art programs, Libresprite is a free fork of Aseprite, and they are intercompatible.</p>
             </section>
 <br><br>
             <section>
-                <h2>Modeling Process</h2>
+                <h2>1.4 Programming</h2>
                 
-                <h3>Step 1: Initial Concept and Sketches</h3>
-                <p>To begin sketching and expanding on my concept, I first researched real-world examples of buildings and piers in a similar setting and style to what I desired and envisioned.</p>
-                <div class="image-group">
-                    <img src="https://coolstays.imgix.net/197179.jpg" alt="Reference 1">
-                    <img src="https://files.holidaycottages.co.uk/docs/lakelandcottagecompany/images/guides/drivers/WL-UW-Guides_Driver.jpg?width=800" alt="Reference 2">
-                    <img src="https://live.staticflickr.com/8004/28992106205_df4efec718_b.jpg" alt="Reference 3">
-                    <img src="https://www.timberhomeliving.com/wp-content/uploads/2011/03/1-timber-frame-home-ext-028.jpg" alt="Reference 5">
-                </div>
-
-                <p>I then used the references to quickly sketch a base layout for my scene, by using the grease pencil in Blender, and sketching a very simple layout in the camera viewport. I spent a short amount of time on this sketch, I refined it until I was happy with the composition, and then quickly moved onto blocking out - as I find blocking out to be a much better way at developing and prototyping my ideas in a 3D space.</p>
-
-                <img src="assets/diorama/greasepencil_sketch.jpg" alt="Grease Pencil Sketch" style="width: 500px; border-radius: 8px; margin: 20px 0;">
-
-                <h3>Step 2: Blocking Out the Environment</h3>
-                <p>After I was happy with the overall composition, I quickly started blocking out the scene. My favourite way to create ideas is to rapidly ideate, sketch, block out, and iterate. This methodology helps me create my best possible ideas, and follows conventions in Design Thinking practice.</p>
-
-                <p>To block out the scene, I kept my sketch and my references open in a Miro whiteboard on my second monitor, and placed primitives in the viewport to establish the relative size, location, and form of the main objects in the scene. I didn't adhere strictly to the sketch, as I wanted to ensure the piece could successfully evoke a feeling of isolation while also giving the feeling of looking <em>into</em> a small piece of another world, all in an aesthetically pleasing form.</p>
-
-                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                    <p><strong>Primitives</strong></p>
-                    <p>Basic 3D geometric shapes that can be used as building blocks to create more complex shapes, for example: cubes, spheres, cylinders and planes.</p>
-                </div>
-
-                <p>I added basic shaders to my block out, to better represent the world I was creating.</p>
-
-                <img src="assets/diorama/fishing_Blockout1.jpg" alt="Block Out 1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
-
-                <p>After my first blocking out of the scene, I decided to make some key changes that would influence the overall direction of the project.</p>
+                <h3>My Responsibilities</h3>
+                <p>As a team we had already planned out our weekly goals for the 6 weeks that this project will go on for, but we had to decide which tasks were whose responsibility as developers. We agreed that I was to develop the character controller, 
+                    ingredient pickup system, button & door mechanics, the cheese throwing, and the main menu/UI.  Dan Ballem took responsibility for the enemy AI, importing all the art assets, making them function, refining existing mechanics and scripts, and creating the levels.</p>
+                
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <h3>Timeline Overview:</h3>
+    <b>Week 1: Conceptualisation and Game Design Document</b>
+    -	Research, concept art
+    -	Early plans for level layouts
+    <b>Week 2: Initial prototype development (basic mechanics) & Art assets creation</b>
+    -	Character controller, character sprites, basic enemy AI, Ingredient pickup
+    <b>Week 3: Refining mechanics & level layout planning/implementation</b>
+    -	Improving already existing mechanics
+    -	Ingredient spawning + enemy spawning
+    -	Buttons & Doors for puzzle element
+    -	Creation of conceptualised levels
+    -	Refining game loop
+    <b>Week 4: Refining Prototype & Refining art</b>
+    -	Implementation of pause/menu screen & UI
+    -	Win condition
+    -	Continued design work on art and UI
+    <b>Week 5: Feedback integration and polishing the prototype</b>
+    -	Continued refining of mechanics
+    -	Fixing of critical bugs
+    -	Get the game into a playable state
+    <b>Week 6: Final presentation and individual reflections</b>
+</pre>
+                
+<h3 class="responsibilities">- Character Controller -</h3>
 <br>
-                <ul>
-                    <li><span>Cut out a smaller square from the scene</span><br>The environment was to be explored in a 3D world, so Having the edges off into the distance with a fixed cut-off would break all sense of it being a section from a lived-in world. My first block out was designed to fit a fixed camera angle, but I reworked it to better fit the brief and expectations of the project.</li>
+                <p>The first thing I did to ensure that a functional prototype could be delivered in time was to create a demo scene, and develop the character controller. This was to allow for a minimum viable product to be created as fast as possible, by giving the other developer a premade scene to allow for easy implementation.
                     <br>
-                    <li><span>Moved the primary camera angle</span><br>The scene draws inspiration from isometric dioramas, so I moved the camera to outside of the scene, looking down. This helped to better establish the feeling of 'looking into' a world.</li>
-                    <br>
-                    <li><span>Built an organic timber frame model for the house</span><br>I built a timber frame for the house, as my concept involved an old stone cottage with a timber frame, so I quickly threw together what I imagined the base layout of the house to be.</li>
-                </ul>
+                    My first iteration of the character controller was extremely simple: <span>[1.4.1]</span>
+                </p>
+<pre>
+<code class="language-csharp">    private void FixedUpdate()
+    {
+        HandleMovement();
+        HandleJumping();
+    }
+    private void HandleMovement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+    }
+    private void HandleJumping()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+        {
+            rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+        }
+    }
+</code></pre>
+<br><br>
+<p>I then improved this by adding better feeling jumps, I was inspired by an approach that many platformers take, by allowing the player to make smaller, finer jumps when tapping jump, and larger jumps when holding it. I implemented this by adding extra downward force to the player when falling and reducing upward force when releasing the jump button early. <br>This creates snappier, more responsive and better-feeling jump mechanics by adjusting gravity dynamically.
+<br><br>AdjustGravity() runs in FixedUpdate() due to rigidbody physics calculations
+</p>
+
+<pre>
+    <code class="language-csharp">    private void AdjustGravity()
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+            }
+            else if (rb.velocity.y > 0 && !Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+            }
+        }
+</code></pre>
+
+<img src="assets/rats/charcontrollerdemo.gif" alt="Controller Demo 4.1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.1</span>
+
+<p>To make this work, I created a prototype player object, which was a 2D capsule sprite, with a 2D box collider (to prevent falling off of corners). I gave this player the tag "Player" and put it on a new layer named "Player" <br>
+    this is so that we could control what collisions do or do not interact with the player, and how the interactions function. The capsule was given a Rigidbody 2D component, a custom 'no friction' physics material, and the PlayerController.cs script. <br>
+    Ground checking is performed by 
+</p>
+<pre><code class="language-csharp">isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);</code></pre>
 <br>
-                <div class="image-group-new">
-                    <img src="assets/diorama/26.09.png" alt="Block Out Progress" style="border-radius: 8px; margin: 20px;">
-                    <img src="assets/diorama/26.09 clay.jpg" alt="Clay Render" style="border-radius: 8px; margin: 20px;">
-                </div>
+<p>so I created a child empty named GroundCheck at the player's 'feet' and in the inspector, linked everything up <span>[1.4.2]</span>. I also put all 'ground' gameObjects into a new layer called Ground, to ensure the collisions only worked between the player and ground.</p>
+<img src="assets/rats/inspectorPlayer.png" alt="Controller Demo 4.1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.2</span>
+<br>
+<p>I turned this player into a prefab, to ensure that it can be used in multiple scenes, but all edits affect all instances of the player.</p>
+<br>
+<h3 class="responsibilities">- Item Pickup -</h3>
+<br>
+<p> Due to previous experience with a PowerUp Picku system in my Top-Down 3D Shooter project, I was very confident with making a working ingredient pickup mechanic.
+    Pickups are handled by PickUpController.cs, which serves as a manager for the pickup system using the Singleton pattern. It tracks the number of collectibles picked up,
+    persists between scenes via DontDestroyOnLoad, and communicates with the UI system to display the current count. The Singleton implementation ensures only one instance exists, preventing duplicate tracking and maintaining consistent state across the game.
+</p>
+<pre>
+    <code class="language-csharp">public static PickUpController Instance { get; private set; }
 
-                <h3>Step 3: Detailed Modeling</h3>
-                <p>My first stage to beginning the detailed modelling stage was to review the previous block outs, and add notes as to what I would like to see improved and added, to establish a set list of goals and ensure that I could fit everything into the time I had to spend on this project.</p>
+private void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
 
-                <img src="assets/diorama/26.09 Notes.jpg" alt="Development Notes" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+private void Start()
+{
+    ResetPickups();
+}
 
-                <p>I began by making a new <span>.blend file</span>, and modelling the ground from scratch. I began with a plane which I subdivided, and edited in the Z-axis with proportional editing, to create a smooth, organic hill shape, with a deep area for the water to sit. To create the flat sides, I extruded the outer corners down in the Z-axis, made them level with each other with the keystrokes</p>
+public void CollectPickup()
+{
+    pickUpCount++;
+    UpdateUI();
+}
+</code></pre>
+<br>
+<p>To demo this, I made a SamplePickup prefab with tag "PickUp" on layer "PickUps". This object has a Circle Collider 2D component, with Is Trigger set to true.
+    <br>
+    In the Player's collision script, the CollectPickup() function is called if the player enters a trigger of object with tag "PickUp", increasing the count of pickups by 1, and updating UI.
+    Then, the other gameObject (in this case, the pickup) is destroyed.
+    <br><br> 
+    It may have been better to simply disable the gameObject, however this is only a prototype, and for our current levels, there is never a need to re-enable a pickup.
+    Only the Player layer can collide with the PickUps layer, preventing any unintentional triggers.
+    <br><br>
+    This system is seen functioning in <span>[1.4.1]</span>
+</p>
 
-                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                    <p><strong>S, Z, 0</strong><br>Scale, Z - axis, 0</p>
-                </div>
 
-                <p>Then, I used the <b>F</b> key to join them together in to a flat base. Finally, I held the <b>Alt</b> key, and selected the loop around each side, and pressed <b>F</b> again, to fill in each of the four side faces of the ground mesh. This left me with n-gons for the sides, however the mesh is intended to be entirely static, and not deformed, additionally, the wall is completely flat. Therefore, I expected there to be no issue with leaving them as n-gons.</p>
 
-                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
-                    <p><strong>N-Gons</strong><br>Polygons with more than four vertices and edges. They are avoided in most cases, as they can cause issues when rendering or deforming a mesh.</p>
-                </div>
-            </section>
+
+
 <br>
             <section>
                 <h2>Shading, Texturing and UV Mapping</h2>

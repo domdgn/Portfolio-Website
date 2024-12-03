@@ -380,13 +380,69 @@ h2 {
 /* PROJECT ARTICLE CSS */
 
 .project-article {
-    text-align: center; /* Centers text content */
+    text-align: center;
 }
 
 .project-article h1,
 .project-article h2,
 .project-article h3 {
     text-align: center;
+}
+
+/* Add specific styling for code blocks */
+.project-article pre,
+.project-article code {
+    text-align: left;
+}
+
+.hljs {
+    text-align: left;
+    direction: ltr;
+}
+
+.hljs,
+.hljs *,
+.hljs .hljs-keyword,
+.hljs .hljs-string,
+.hljs .hljs-number,
+.hljs .hljs-built_in,
+.hljs .hljs-literal,
+.hljs .hljs-type,
+.hljs .hljs-params,
+.hljs .hljs-meta,
+.hljs .hljs-title,
+.hljs .hljs-attr,
+.hljs .hljs-symbol,
+.hljs .hljs-bullet,
+.hljs .hljs-addition,
+.hljs .hljs-variable,
+.hljs .hljs-template-tag,
+.hljs .hljs-template-variable {
+    font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+}
+
+.project-article .RefNum {
+    color: #7ad7ff;
+    font-weight: 700;
+    margin: -10px 0 10px 0;
+    font-size: 1rem;
+    display: inline-block;
+    background: #1e293b;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+}
+
+.project-article h1,
+.project-article h2,
+.project-article h3 {
+    text-align: center;
+}
+
+.project-article .responsibilities {
+    color: #f9a825;
+    background: #1e293b;
+    padding: 1px 50px;
 }
 
 .project-article h2 {
@@ -436,19 +492,35 @@ h2 {
     align-items: center;
 }
 
-/* Container for the group of images */
 .image-group {
-    display: flex; /* Use flexbox to arrange images in a row */
-    align-items: flex-start;
-    justify-content: space-between; /* Space out the images evenly */
-    gap: 10px; /* Use gap to create space between flex items */
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin: 20px 0;
 }
 
-/* Individual images within the group */
+.image-group figure {
+    flex: 1;
+}
+
 .image-group img {
-    max-width: 25%; /* Prevent images from exceeding the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px;/* Rounded corners */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.image-group .RefNum {
+    color: #38bdf8;
+    font-weight: 700;
+    font-size: 1.1rem;
+    background: #1e293b;
+    padding: 4px 12px;
+    border-radius: 6px;
+    border: 1px solid #334155;
+    margin-top: 8px;
+    display: block;
+    text-align: center;
 }
 
 .image-group.previz img {

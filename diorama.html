@@ -52,11 +52,11 @@
                     <iframe 
                       style="position: relative; z-index: 2;"
                       frameborder="0" 
-                      src="https://itch.io/embed-upload/12160319?color=0f172a" 
+                      src="https://itch.io/embed-upload/12160319?color=010d13" 
                       allowfullscreen="" 
                       width="960" 
                       height="700">
-                      <a href="https://domdgn.itch.io/3d-diorama-practice">Play 3D Diorama Practice on itch.io</a>
+                      <a href="https://domdgn.itch.io/3d-diorama-practice">Play</a>
                     </iframe>
                   </div>            <section>
                     <br><br><br>
@@ -184,11 +184,43 @@
                 <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
                     <p><strong>N-Gons</strong><br>Polygons with more than four vertices and edges. They are avoided in most cases, as they can cause issues when rendering or deforming a mesh.</p>
                 </div>
+                <br>
+                <h3 class="responsibilities">- House -</h3>
+                <img src="assets/diorama/modelling/house.jpg" alt="House Clay" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <p>The base mesh for the house is very simple, I started with a cube, scaled it to an approximate size, then created an edge loop, selected the middle edge on the top face, and moved it upwards in the Z-axis to create the roof & gable.
+                    <br><br>Then, I used the Knife tool to cut an edge into one of the side faces, and extruded out the attachment. To clean up on useless edges, I dissolved the unnecessary edges.
+                    <br><br>The circular window was created using the <span>Loop Tools</span> addon, by creating a point in the center of where I wanted the window, then bevelling the vertex, and using the Loop Tool's 'Circle' tool.
+                    Then, I extruded it inwards.
+
+                    <br><br>The corner bricks and details are separate children of the main body of the house. 
+                    <br><br> I created two bricks from a bevelled cube, then used a series of <span>array</span> and <span>mirror</span> modifiers to place them on the corners of the house. Manual adjustment was necessary afterwards, however using modifiers saved time. <br><br>
+                    To make a more organic feel, I used <span>randomise transform</span> to give each brick a unique offset/rotation. This makes everything feel more natural and organic.
+                </p> <br>
+                <h3 class="responsibilities">- Tiles -</h3>
+                <img src="assets/diorama/modelling/tiles.jpg" alt="Tiles" style="width: 400px; border-radius: 8px; margin: 20px 0;">
+                <p>The tiles were modelled in a similar manner to the corner bricks of the house - with a series of array modifiers to create a staggered tile pattern.
+                    <br><br>Difficulty came with preventing clipping of tiles through the roof window, and also with the smaller tiles on the edges. Therefore, I had to apply the modifiers and manually remove and add tiles where needed.
+                    <br><br>This is not the ideal method to making this. In the future, if I was to do this again, I would research ways to do this using better methods such as <span>geometry nodes</span> instead. This would allow for more precise control over tile placement and easier adjustments around windows and edges, while maintaining a non-destructive workflow that's easier to modify later. The node-based approach would also make it simpler to adjust tile spacing, rotation, and overlap dynamically.
+                </p>
             </section>
-<br>
+<br><br>
             <section>
                 <h2>Shading, Texturing and UV Mapping</h2>
-                <p>Discuss the texturing process, including how you unwrapped the UVs and applied textures to the models.</p>
+
+                <h3 class="responsibilities">- Shading -</h3>
+                <br>
+                <p>In <span>Blender</span>, all of the materials used are procedural. They were all created by myself, using the <span>Node Wrangler</span> addon. For example, the colours for the tiles are determined randomly per each tile using an Object Info node, and the water shader uses many nodes.</p>
+
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/diorama/modelling/nodesTiles.jpg" alt="Tiles Nodes">
+                        <span class="RefNum"><a href="#references">REF!!!</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/nodesWater.jpg" alt="Water Nodes">
+                        <span class="RefNum"><a href="#references">dont forget</a></span>
+                    </figure>
+                </div>
             </section>
 <br>
             <section>

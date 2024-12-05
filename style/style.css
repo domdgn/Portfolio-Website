@@ -479,11 +479,6 @@ h2 {
     color: #475d7c;
 }
 
-.references a {
-    color: inherit;  /* This will make links inherit the gray color from .references */
-    text-decoration: underline;
-}
-
 .project-article a {
     text-decoration: none;
     color: #38bdf8;

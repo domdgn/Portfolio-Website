@@ -32,11 +32,19 @@ nav {
     align-items: center;
 }
 
-.logo {
-    color: #f87338;
-    text-decoration: none;
-    font-size: 2rem;
-    font-weight: bold;
+.logo svg {
+    padding-top: 10px;
+    width: 48px;
+    height: 48px;
+}
+
+.logo svg rect {
+    fill: #f87338;
+}
+
+.logo svg path {
+    fill: none;
+    stroke: #f87338;
 }
 
 .nav-links a {

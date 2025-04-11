@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group Game Project Y1S1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="styles/atom-one-dark.min.css">
+    <script src="script/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 62 57" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <rect width="10" height="57" fill="#f87338"/>
+                        <path d="M13,52h20c12.5,0,24-10.25,24-23.5S46.5,5,33,5H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                        <path d="M13,39h18.64c6.88,0,12.46-4,12.46-10.63s-5.58-10.37-12.46-10.37H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="about.html">About</a>
+                <a href="assets/CV - Dominic Duggan.pdf">CV</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 80px auto; padding: 20px;">
+        <article class="project-article">
+            <h1>Hangry Rats - Group Game Project</h1>
+
+            <section>
+                <h2 class="overview">Overview</h2>
+                <p><strong>2D Puzzle-Platformer</strong></p>
+                <p><span>Date Started:</span> 7th November 2024</p>
+                <p><span>My Role:</span> Developer</p>
+                <p><span>Software Used:</span> Unity, C#</p>
+                <p><span><a href="https://github.com/domdgn/Hangry-Rats/releases/tag/0.1">Download Here</a></span></p>
+                <img src="assets/rats/cover.png" alt="Project Overview" class="finalimg">
+            </section>
+            <br>
+            <h1>Section 1 | Prototype</h1>
+            <section>
+                <h2>1.1 Introduction & Goal</h2>
+                <p>This is a Group Game Project made in Year 1, Semester 1. You play as a chef with the goal of collecting as many ingredients as you can before the enemy rats take them. You can throw cheese to distract the rats and activate buttons.
+                    <br><br>
+                    The goal is to develop a <span>functioning prototype</span> of a game in 6 weeks. The brief was as follows: 
+                    <br>
+                    "Working in teams, create a computer game concept, appropriately aimed at <span>11-15 year olds</span>."
+                    <br><br>
+                    My role in this project was as <span>Developer</span>.
+                    <br><br>
+                    I worked in a team of 2 developers and 3 artists/designers. However we all concepted our project as a group.
+                </p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.2 Concept and Inspiration</h2>
+                <p>As a team we initally came together and brainstormed ideas for our project, the only restriction in the brief was that it needs to be rated at or below <span>PEGI 12</span>.</p>
+                <br>
+                <p>We assessed the skills of everyone in the group, and first decided on what art style to produce. Due to the majority of the artists having proficiency in 2D art, we decided that the best option to prevent the risk of not being able to achieve the planned scope was to create a 2D game in a pixel art style.</p>
+                <br>
+                <p>Then, we worked to define what the concept of the game would be. We were comfortable with restricting ourselves to the art style,  and we used <span>Miro</span> to organise our ideas and come up with the final concept of a puzzle platformer themed around cooking. Our first concepts involved the rat enemies being killable, perhaps with a similar mechanic to that of the goombas in Super Mario Bros. 
+                    <br><br>
+                    However, we deemed animal cruelty as not fitting the brief, and instead decided on a fun and engaging puzzle-platformer game, where instead of being able to crush the rats, you instead can distract them, and you need to do this to activate buttons to progress.
+                    <br><br>
+                    We designed the concept of the game using a whiteboard, <span>[1.2.1]</span> and settled confidently on our project idea.
+                </p>
+
+
+                <img src="assets/rats/whiteboard.jpg" alt="Whiteboard Notes 2.1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <span class="RefNum">1.2.1</span>
+                <br>
+                <p>After spending time on this, as a team we quickly pulled together some reference art and developed what the setting for our game was going to be like:</p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/rats/Ref/ref_art.png" alt="Reference 1">
+                        <span class="RefNum"><a href="#references">1.2.2</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/rats/Ref/ref2.jpg" alt="Reference 2">
+                        <span class="RefNum"><a href="#references">1.2.3</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/rats/Ref/ref3.jpg" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.2.4</a></span>
+                    </figure>
+                </div>
+                <p>We then developed my ideas into my <strong>final setting concept</strong>: various locations, beginning first in a small, artificially lit alleyway, and the game progresses into a brighter, more lively city centre as levels go on.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.3 Tools and Software</h2>
+
+                <h3>Unity</h3>
+                <p>Myself and Dan Ballem (the other developer on the project) were both already familiar with the 2D development tools in Unity, therefore, we decided it was best - and within scope - to develop the prototype for our game with such tools.</p>
+                
+                <h3>Miro</h3>
+                <p>Miro is an online interactive whiteboard/note-taking app, used widely in industry and we chose to use it with this project, to gather ideas and inspiration in a manageable and shareable format, ideal for showing how and why we developed our ideas.</p>
+
+                <h3>Aseprite & Libresprite</h3>
+                <p>The artists used mainly Aseprite and Libresprite. These are both pixel art programs, Libresprite is a free fork of Aseprite, and they are intercompatible.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.4 Programming</h2>
+                <p>Before I began programming, I setup a new Unity project, installed all the necessary packages (e.g. 2D tools) and created a <span>GitHub</span> repository to use as our version control software.</p>
+                <br>
+                <h3>My Responsibilities</h3>
+                <p>As a team we had already planned out our weekly goals for the 6 weeks that this project will go on for, but we had to decide which tasks were whose responsibility as developers. We agreed that I was to develop the character controller, 
+                    ingredient pickup system, button & door mechanics, the cheese throwing, and the main menu/UI.  Dan Ballem took responsibility for the enemy AI, importing all the art assets, making them function, refining existing mechanics and scripts, and creating the levels.</p>
+                
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <h3>Timeline Overview:</h3>
+    <b>Week 1: Conceptualisation and Game Design Document</b>
+    -	Research, concept art
+    -	Early plans for level layouts
+    <b>Week 2: Initial prototype development (basic mechanics) & Art assets creation</b>
+    -	Character controller, character sprites, basic enemy AI, Ingredient pickup
+    <b>Week 3: Refining mechanics & level layout planning/implementation</b>
+    -	Improving already existing mechanics
+    -	Ingredient spawning + enemy spawning
+    -	Buttons & Doors for puzzle element
+    -	Creation of conceptualised levels
+    -	Refining game loop
+    <b>Week 4: Refining Prototype & Refining art</b>
+    -	Implementation of pause/menu screen & UI
+    -	Win condition
+    -	Continued design work on art and UI
+    <b>Week 5: Feedback integration and polishing the prototype</b>
+    -	Continued refining of mechanics
+    -	Fixing of critical bugs
+    -	Get the game into a playable state
+    <b>Week 6: Final presentation and individual reflections</b>
+</pre>
+                
+<h3 class="responsibilities">- Character Controller -</h3>
+<br>
+                <p>The first thing I did to ensure that a functional prototype could be delivered in time was to create a demo scene, and develop the character controller. This was to allow for a minimum viable product to be created as fast as possible, by giving the other developer a premade scene to allow for easy implementation.
+                    <br>
+                    My first iteration of the character controller was extremely simple: <span>[1.4.1]</span>
+                </p>
+<pre>
+<code class="language-csharp">private void FixedUpdate()
+{
+    HandleMovement();
+    HandleJumping();
+}
+private void HandleMovement()
+{
+    float horizontalInput = Input.GetAxis("Horizontal");
+    rb.velocity = new Vector2(horizontalInput * speed, rb.velocity.y);
+}
+private void HandleJumping()
+{
+    if (Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.UpArrow) && isGrounded)
+    {
+        rb.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
+    }
+}
+</code></pre>
+<br><br>
+<p>I then improved this by adding better feeling jumps, I was inspired by an approach that many platformers take, by allowing the player to make smaller, finer jumps when tapping jump, and larger jumps when holding it. I implemented this by adding extra downward force to the player when falling and reducing upward force when releasing the jump button early. <br>This creates snappier, more responsive and better-feeling jump mechanics by adjusting gravity dynamically.
+<br><br>AdjustGravity() runs in FixedUpdate() due to rigidbody physics calculations
+</p>
+
+<pre>
+    <code class="language-csharp">private void AdjustGravity()
+    {
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (fallMultiplier - 1) * Time.fixedDeltaTime;
+        }
+        else if (rb.velocity.y > 0 && !Input.GetKeyDown(KeyCode.Space) && !Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            rb.velocity += Vector2.up * Physics2D.gravity.y * (lowJumpMultiplier - 1) * Time.fixedDeltaTime;
+        }
+    }
+</code></pre>
+
+<img src="assets/rats/charcontrollerdemo.gif" alt="Controller Demo 1.4.1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.1</span>
+
+<p>To make this work, I created a prototype player object, which was a 2D capsule sprite, with a 2D box collider (to prevent falling off of corners). I gave this player the tag "Player" and put it on a new layer named "Player" <br>
+    this is so that we could control what collisions do or do not interact with the player, and how the interactions function. The capsule was given a Rigidbody 2D component, a custom 'no friction' physics material, and the PlayerController.cs script. <br>
+    Ground checking is performed by 
+</p>
+<pre><code class="language-csharp">isGrounded = Physics2D.OverlapCircle(groundCheck.position, groundCheckRadius, groundLayer);</code></pre>
+<br>
+<p>so I created a child empty named GroundCheck at the player's 'feet' and in the inspector, linked everything up <span>[1.4.2]</span>. I also put all 'ground' gameObjects into a new layer called Ground, to ensure the collisions only worked between the player and ground.</p>
+<img src="assets/rats/inspectorPlayer.png" alt="Inspector 1.4.2" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.2</span>
+<br>
+<p>I turned this player into a prefab, to ensure that it can be used in multiple scenes, but all edits affect all instances of the player.</p>
+<br>
+<h3 class="responsibilities">- Item Pickup -</h3>
+<br>
+<p> Due to previous experience with a PowerUp Picku system in my Top-Down 3D Shooter project, I was very confident with making a working ingredient pickup mechanic.
+    Pickups are handled by PickUpController.cs, which serves as a manager for the pickup system using the Singleton pattern. It tracks the number of collectibles picked up,
+    persists between scenes via DontDestroyOnLoad, and communicates with the UI system to display the current count. The Singleton implementation ensures only one instance exists, preventing duplicate tracking and maintaining consistent state across the game.
+</p>
+<pre>
+    <code class="language-csharp">public static PickUpController Instance { get; private set; }
+
+private void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+
+private void Start()
+{
+    ResetPickups();
+}
+
+public void CollectPickup()
+{
+    pickUpCount++;
+    UpdateUI();
+}
+</code></pre>
+<br>
+<p>To demo this, I made a SamplePickup prefab with tag "PickUp" on layer "PickUps". This object has a Circle Collider 2D component, with Is Trigger set to true.
+    <br>
+    In the Player's collision script, the CollectPickup() function is called if the player enters a trigger of object with tag "PickUp", increasing the count of pickups by 1, and updating UI.
+    Then, the other gameObject (in this case, the pickup) is destroyed.
+    <br><br> 
+    It may have been better to simply disable the gameObject, however this is only a prototype, and for our current levels, there is never a need to re-enable a pickup.
+    Only the Player layer can collide with the PickUps layer, preventing any unintentional triggers.
+    <br><br>
+    This system is seen functioning in <span>[1.4.1]</span>
+</p>
+<br>
+<h3 class="responsibilities">- Buttons & Doors -</h3>
+<br>
+<p>Before beginning to write code, I planned out what would be necessary for the buttons and doors to work as we had planned. 
+    <br>I came to the conclusion that there needed to be a way to have multiple doors activated by one button, and multiple buttons to activate one door, allowing for much more
+    unique level design and creative puzzles.
+    <br>
+    I decided to implement this using a DoorManager singleton that maintains a Dictionary mapping button IDs to lists of doors. This allows:
+</p>
+<br>
+    <ul>
+        <li>- Multiple doors to be registered to the same button ID</li>
+        <li>- One door to respond to multiple buttons</li>
+        <li>- Centralised control over door states through the DoorManager</li>
+        <li>- Easy activation of all doors tied to a specific ID</li>
+    </ul>
+<br>
+<pre>
+    <code class="language-csharp">public static DoorManager Instance { get; private set; }
+
+private Dictionary<int, List<DoorScript>> doorGroups = new Dictionary<int, List<DoorScript>>();
+    
+private void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+    
+public void RegisterDoor(DoorScript door, int doorID)
+{
+    if (!doorGroups.ContainsKey(doorID))
+    {
+        doorGroups[doorID] = new List<DoorScript>();
+    }
+    doorGroups[doorID].Add(door);
+}
+    
+public void ActivateDoors(int buttonID, bool open)
+{
+    if (doorGroups.ContainsKey(buttonID))
+    {
+        foreach (DoorScript door in doorGroups[buttonID])
+        {
+            door.SetDoorState(open);
+        }
+    }
+}
+</code></pre>
+<br>
+<p>
+    This allowed me to create a button prefab with a collision handler script that, when is triggered by the player, executes <br><br><pre><code class="language-csharp">DoorManager.Instance.ActivateDoors(buttonID, false);</code></pre>
+    <br>This requires buttonID and doorID to be manually set when the prefabs are placed in the level. There is also a script on the door prefab which controls movement and has a serialised doorID field.
+    <br>The door's movement is controlled programmatically.
+    <br><br><pre><code class="language-csharp">private void Update()
+        {
+            Vector3 targetPosition = isOpen ? openPosition : closedPosition; // ? is if isOpen is true and : is if isOpen is false
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
+        }</code></pre>
+</p> <br>
+<p>This can be seen functioning in <span>[1.4.3]</span></p>
+
+<img src="assets/rats/door.gif" alt="Door Demo 1.4.3" style="width: 1000px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.2</span>
+
+<br>
+            <section>
+                <h2>Reflection on Current Progress</h2>
+                <p>Development of Hangry Rats is mostly keeping pace with the weekly schedule we had planned. As of week 4, we have successfully prototyped core mechanics, such as the player controller, pickup system, door/button mechanics, enemy AI, and I also developed a win condition (when a specific number of pickups
+                    are collected, a door to the next level unlocks.
+                    <br>
+                    The things that still need implementing from weeks 3-4 include: spawning systems for ingredients and enemies, and the creation/design of more fun & thematic levels. 
+                    <br>
+                    With core systems complete, we're on track to delivering a suitable prototype that fits the brief when the 6 weeks are over, and the remaining weeks will be focused on creating puzzles, UI, and improving the gameloop.
+                </p>
+                <br>
+                <h3>Limitations/Failures</h3>
+                <br>
+                <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
+                    <br><br>
+                    For example, development felt mostly disorganised, due to poor communication and lack of leadership. In future group projects, I think it would be valuable
+                    to designate one person from each team (artists/developers) as the lead, and give them the role of managing everything and ensuring everything is organised, done on time, and that every system works together.
+                    <br><br>
+                    Using GitHub for version control hindered our progress from the beginning, as a lot of time was spent both setting it up and teaching everyone how to use it, however, progress speed quickly ramped up after we had all
+                    gotten used to how it works. Perhaps in future projects, Unity's own Version Control System would be preferable.
+                    <br><br>
+                    A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
+                    <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.
+                    <br><br>
+                    A lot of the systems I created do not work in every situation, due to a lack of polish. For example, if the Player & Rat stand on a button at the same time, when one of them steps off, the button thinks that it is deactivated. <br>
+                    I don't think this has a huge impact for a prototype, however it is still a notable limitation of my scripts. <br>
+                    I believe that this is fixable by tracking how many objects are on the button, and only deactivating it if the counter is zero, instead of on any OnTriggerExit2D event.
+                    <br><br><br>
+                    Based on these limitations I think the further 2/3 weeks of development time left will be enough to make everything functional as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
+                    want the game to have significant polish.
+
+                    An area I would need to research is how to use normal maps on 2D sprites and how to effectively light a 2D scene in a 3D 'world', as the current game has a very 'flat' and uninspiring look to it, which I believe would
+                    be greatly improved with more atmospheric lighting. Furthermore, I also need to research how to properly transition between animations on a sprite, for example between jumping, running, etc. This would make the game feel much more lively and fun.
+                </p>
+            </section>
+<br>
+            <section>
+                <h2>Further Development</h2>
+                <p>Following my reflection, I have outlined a weekly plan to ensure the project is fully playable before the 6 weeks are over:</p>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <b>Week 4 (cont.):</b>
+    -	Development & implementation of enemy & ingredient spawning
+    -	Design and build levels using the core mechanics already built
+    -   Build a functioning Main Menu & improved UI
+    -   Bugfix
+    <b>Week 5:</b>
+    -	Design a more appealing Main Menu & UI
+    -   Refine Character & Enemy animations & transitions
+    -   Implement normal maps where necessary
+    -	Design and build levels using the core mechanics already built
+    -   Bugfix
+    <b>Week 6:</b>
+    -	Light & polish up levels
+    -   Polish mechanics
+    -   Playtest
+    -   Bugfix
+</pre>
+            </section>
+<br>
+            <section>
+                <h2>Key Tasks & Dependencies</h2>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before lighting.
+<br>
+<b>Button Fix: </b>Must be completed before designing puzzles, as to not accidentally design something which is unplayable after the fix.
+<br>
+<b>Audio Clips: </b>Must be completed before implementation.
+</pre>
+            </section>
+<br>
+<section class="references" id="references">
+    <h3>References</h3>
+    <br>
+    <p>[1.2.2] Residential Area Tileset (2021). [Art]. Free Game Assets (GUI, Sprite, Tilesets). Retrieved from <a href="https://free-game-assets.itch.io/residential-area-tileset-pixel-art">https://free-game-assets.itch.io/residential-area-tileset-pixel-art</a></p>
+    <br>
+    <p>[1.2.3] pixel city (animated) 2 (2018). [Art]. Lazur. Retrieved from <a href="https://openclipart.org/detail/310402/pixel-city-animated-2">https://openclipart.org/detail/310402/pixel-city-animated-2</a></p>
+    <br>
+    <p>[1.2.4] Pixel art street with buildings, stores, trees and sky with clouds (n.d.). [Art]. Chuckchee | Dreamstime.com. Retrieved from <a href="https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669">https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669</a></p>
+    <br>
+</section>
+        </article>
+    </main>
+</body>
+</html>

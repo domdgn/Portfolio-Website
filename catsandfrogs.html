@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cats and Frogs Y1S2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="styles/atom-one-dark.min.css">
+    <script src="script/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="#" class="logo">
+                <svg width="32" height="32" viewBox="0 0 62 57" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <rect width="10" height="57" fill="#f87338"/>
+                        <path d="M13,52h20c12.5,0,24-10.25,24-23.5S46.5,5,33,5H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                        <path d="M13,39h18.64c6.88,0,12.46-4,12.46-10.63s-5.58-10.37-12.46-10.37H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="about.html">About</a>
+                <a href="assets/CV - Dominic Duggan.pdf">CV</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 80px auto; padding: 20px;">
+        <article class="project-article">
+            <h1>Cats and Frogs - Group Game Project</h1>
+
+            <section>
+                <h2 class="overview">Overview</h2>
+                <p><strong>2D Tower Defense</strong></p>
+                <p><span>Date Started:</span> 28th January 2025</p>
+                <p><span>My Role:</span> Developer & Concept Artist</p>
+                <p><span>Software Used:</span> Unity, C#, Aseprite</p>
+                <p><span><a href="https://github.com/domdgn/Cats-And-Frogs">GitHub</a></span></p>
+                <img src="images/CatsandFrogsCover.jpg" alt="Project Overview" class="finalimg">
+            </section>
+            <br>
+            <h1>Section 1 | Conception & Goal</h1>
+            <section>
+                <h2>1.1 Introduction & Goal</h2>
+                <p>This is a Group Game Project made in Year 1, Semester 2.
+                    <br><br>
+                    The goal is to develop a functioning prototype of a game. The brief was as follows: 
+                    <br>
+                    "Working in teams, create a <span>tower defense</span> game targeted at mobile devices, with <span>high performance</span>."
+                    <br><br>
+                    My role in this project was as <span>Developer</span>.
+                    <br><br>
+                    I worked in a team of 1 Developer and 2 Artists/Designers. However we all concepted our project as a group.
+                </p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.2 Concept and Inspiration</h2>
+                <p>As a team we initally came together and brainstormed ideas for our project, the only restriction in the brief was that it needs to be a <span>tower defense mobile game</span>.</p>
+                <br>
+                <p>
+                    After choosing the tower defense brief, we gathered all of our ideas together to decide on the concept of the game. After some time of brainstorming, we concluded that we would like
+                    our game to draw heavy inspiration from <span>Plants vs. Zombies</span>, but be adapted into a vertical format, with <span>retro</span> design elements.
+                </p>
+                <br>
+                <p>As a team we quickly pulled together some reference art:</p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/catsandfrogs/Ref/megaxovels.png" alt="Reference 1">
+                        <span class="RefNum"><a href="#references">1.2.2</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/catsandfrogs/Ref/A+_bft.png" alt="Reference 2">
+                        <span class="RefNum"><a href="#references">1.2.3</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/catsandfrogs/Ref/this-is-pixel-art-32-v0-nkuzyqik9cic1.png" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.2.4</a></span>
+                    </figure>
+                </div>
+                <p>We then developed the ideas into a <strong>final setting concept</strong>: The towers in this game would be Cats, and the
+                    enemies would be Frogs, and the goal is to defend a pond from the incoming frogs..</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.3 Tools and Software</h2>
+
+                <h3>Unity</h3>
+                <p>Unity is the game engine we chose to use, due to its familiarity and stength of 2D tools and workflow</p>
+                
+                <h3>Trello</h3>
+                <p>Trello is a visual project management tool that uses boards, lists, and cards to help individuals and teams organise tasks and collaborate efficiently. We used this to manage tasks and share the workload</p>
+
+                <h3>Aseprite & Libresprite</h3>
+                <p>The artists used mainly Aseprite and Libresprite. These are both pixel art programs, Libresprite is a free fork of Aseprite, and they are intercompatible.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.4 Programming</h2>
+                <p>Before I began programming, I setup a new Unity project, installed all the necessary packages (e.g. 2D tools) and created a <span>GitHub</span> repository to use as our version control software.</p>
+                <br>
+                <h3>My Responsibilities</h3>
+                <p>As the sole developer, I planned my own schedule, and broke down the key features needed for a working prototype into the allotted time.</p>
+                
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <h3>Development Timeline Overview:</h3>
+    <b>Week 1: Conceptualisation</b>
+    -	Research, concept art
+    -	Solidify gameloop and concept
+    <b>Week 2: Grid & Drag and Drop</b>
+    -	Drag and Drop using Touch
+    -   Placement of objects on the grid
+    <b>Week 3: Cats and Frogs</b>
+    -	Create Scriptable Objects for both entity classes
+    -   Movement
+    -   Attacking
+    <b>Week 4: Health</b>
+    -	Create health
+    -   Destroy entities on death
+    <b>Week 5: Shop</b>
+    -	Create functional shop
+    -   Fix bugs
+    -   Functional UI
+    <b>Week 6: Final presentation and individual reflections</b>
+</pre>
+                
+<h3 class="responsibilities">- Grid System -</h3>
+<br>
+                <p>My first task was to develop the grid system that would be fundamental to the games mechanics.
+                    <br><br>
+                    My first iteration of the grid system was very simple, only allowing for placement and removal of a temporary prefab. <span>[1.4.1]</span>
+                    <br>I first created a demo scene with containers in a Grid Layout Group, with a BoxCollider2D, and the GridSquare tag.
+                </p>
+
+                <br>
+                <img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Controller Demo 1.4.1" style="width: 200px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.1</span>
+<br>
+<pre>
+<code class="language-csharp">void Update()
+{
+    if (Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+    {
+        Vector2 touchPosition = Input.GetTouch(0).position;
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, -Camera.main.transform.position.z));
+        worldPosition.z = 0;
+
+        LayerMask gridLayerMask = LayerMask.GetMask("TileGrid");
+        RaycastHit2D hit = Physics2D.Raycast(worldPosition, Vector2.zero, Mathf.Infinity, gridLayerMask);
+
+        if (hit.collider != null && hit.collider.gameObject.CompareTag("GridSquare"))
+        {
+            Transform gridSquare = hit.collider.transform;
+
+            if (gridSquare.childCount == 1 || gridSquare.childCount == 0)
+            {
+                GameObject spawned = Instantiate(prefabToSpawn, gridSquare.position, Quaternion.identity);
+                spawned.transform.parent = gridSquare;
+            }
+            else
+            {
+                foreach (Transform child in gridSquare)
+                {
+                    if (child.CompareTag("Cat"))
+                    {
+                        Destroy(child.gameObject);
+                    }
+                }
+            }
+        }
+    }
+}
+</code></pre>
+<br><br>
+<p>I also created a separate scene, where I developed the Drag-and-Drop system, another key mechanic. I ended up creating a DragManager.cs, which handles whether dragging is allowed, if the player is currently dragging, etc. 
+</p>
+
+<pre>
+    <code class="language-csharp">public static class DragManager
+{
+    public static bool isDragAllowed;
+    public static bool isDragging;
+    public static GameObject dragObject;
+    public static int currentDraggingId = -1;
+}
+</code></pre>
+<br>
+<p>
+    I separated out the touch functions from the grid system to a TouchManager.cs to separate concerns. This invokes <span>Unity Events</span> that are used by all scripts involving
+    touch input.
+</p><br>
+<pre><code class="language-csharp">private void Update()
+{
+    if (Input.touchCount <= 0) return;
+
+    Touch touch = Input.GetTouch(0);
+    Vector3 touchPosition = Camera.main.ScreenToWorldPoint(touch.position);
+    touchPosition.z = 0;
+
+    switch (touch.phase)
+    {
+        case TouchPhase.Began:
+            currentTouchedObject = GetTouchedObject(touchPosition);
+            OnTouchBegan?.Invoke(touchPosition, touch);
+            break;
+
+        case TouchPhase.Moved:
+            OnTouchMoved?.Invoke(touchPosition, touch);
+            break;
+
+        case TouchPhase.Ended:
+        case TouchPhase.Canceled:
+            OnTouchEnded?.Invoke(touchPosition, touch);
+            currentTouchedObject = null;
+            break;
+    }
+}
+</code></pre>
+<br>
+<p>The Drag-and-Drop function is handled by CardDragger.cs, each shop tile has its own instance of this script. When the shop tile is touched, if the requirements are met, it instantiates a preview image on the UI layer (to allow for smooth movement with
+    the pixel perfect camera) which tracks the touch position, when let go, if it is over a grid square, <span>ShopSpawnScript.cs</span> handles spawning and deployment of the Cat.
+</p>
+<pre><code class="language-csharp">private void HandleTouchBegan(Vector3 touchPosition, Touch touch)
+{
+    if (!CameraController.atShop || !DragManager.isDragAllowed)
+        return;
+
+    if (TouchManager.Instance.IsObjectTouched(gameObject, touchPosition) && canAfford)
+    {
+        DragManager.isDragging = true;
+        DragManager.currentDraggingId = instanceId;
+        shopSpawnScript.SpawnPreviewCat(touchPosition);
+    }
+}
+
+private void HandleTouchEnded(Vector3 touchPosition, Touch touch)
+{
+    if (!DragManager.isDragging || DragManager.currentDraggingId != instanceId)
+        return;
+
+    RaycastHit2D hit;
+    if (TouchManager.Instance.RaycastOnLayer(touchPosition, gridLayer, out hit))
+    {
+        Vector2 gridPosition = hit.collider.transform.position;
+        if (!ContainerHandler.IsPositionOccupied(gridPosition))
+        {
+            DragManager.isDragging = false;
+            shopSpawnScript.RemovePreviewCat();
+            shopSpawnScript.DeployCat(gridPosition);
+            CurrencyManager.Instance.SpendMoney(cost);
+            ContainerHandler.OccupyPosition(gridPosition, shopSpawnScript.GetSpawnedObject());
+        }
+        else
+        {
+            DragManager.isDragging = false;
+            shopSpawnScript.RemovePreviewCat();
+            Debug.LogWarning("Position already occupied");
+        }
+    }
+    else
+    {
+        DragManager.isDragging = false;
+        shopSpawnScript.RemovePreviewCat();
+        Debug.LogWarning("Placement outside of grid not allowed");
+    }
+}
+
+void LateUpdate()
+{
+    if (DragManager.isDragging && DragManager.currentDraggingId == instanceId && Input.touchCount > 0)
+    {
+        Vector3 TouchPosition = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+        TouchPosition.z = 0;
+        GameObject spawnedObject = shopSpawnScript.GetSpawnedObject();
+        if (spawnedObject != null)
+        {
+            spawnedObject.transform.position = TouchPosition;
+        }
+    }
+}
+</code></pre>
+<br>
+<img src="assets/catsandfrogs/inspectorShop.png" alt="Inspector 1.4.2" style="width: 600px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.2</span>
+<br>
+<p>I turned this player into a prefab, to ensure that it can be used in multiple scenes, but all edits affect all instances of the player.</p>
+<br>
+<h3 class="responsibilities">- Item Pickup -</h3>
+<br>
+<p> Due to previous experience with a PowerUp Picku system in my Top-Down 3D Shooter project, I was very confident with making a working ingredient pickup mechanic.
+    Pickups are handled by PickUpController.cs, which serves as a manager for the pickup system using the Singleton pattern. It tracks the number of collectibles picked up,
+    persists between scenes via DontDestroyOnLoad, and communicates with the UI system to display the current count. The Singleton implementation ensures only one instance exists, preventing duplicate tracking and maintaining consistent state across the game.
+</p>
+<pre>
+    <code class="language-csharp">public static PickUpController Instance { get; private set; }
+
+private void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+
+private void Start()
+{
+    ResetPickups();
+}
+
+public void CollectPickup()
+{
+    pickUpCount++;
+    UpdateUI();
+}
+</code></pre>
+<br>
+<p>To demo this, I made a SamplePickup prefab with tag "PickUp" on layer "PickUps". This object has a Circle Collider 2D component, with Is Trigger set to true.
+    <br>
+    In the Player's collision script, the CollectPickup() function is called if the player enters a trigger of object with tag "PickUp", increasing the count of pickups by 1, and updating UI.
+    Then, the other gameObject (in this case, the pickup) is destroyed.
+    <br><br> 
+    It may have been better to simply disable the gameObject, however this is only a prototype, and for our current levels, there is never a need to re-enable a pickup.
+    Only the Player layer can collide with the PickUps layer, preventing any unintentional triggers.
+    <br><br>
+    This system is seen functioning in <span>[1.4.1]</span>
+</p>
+<br>
+<h3 class="responsibilities">- Buttons & Doors -</h3>
+<br>
+<p>Before beginning to write code, I planned out what would be necessary for the buttons and doors to work as we had planned. 
+    <br>I came to the conclusion that there needed to be a way to have multiple doors activated by one button, and multiple buttons to activate one door, allowing for much more
+    unique level design and creative puzzles.
+    <br>
+    I decided to implement this using a DoorManager singleton that maintains a Dictionary mapping button IDs to lists of doors. This allows:
+</p>
+<br>
+    <ul>
+        <li>- Multiple doors to be registered to the same button ID</li>
+        <li>- One door to respond to multiple buttons</li>
+        <li>- Centralised control over door states through the DoorManager</li>
+        <li>- Easy activation of all doors tied to a specific ID</li>
+    </ul>
+<br>
+<pre>
+    <code class="language-csharp">public static DoorManager Instance { get; private set; }
+
+private Dictionary<int, List<DoorScript>> doorGroups = new Dictionary<int, List<DoorScript>>();
+    
+private void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+}
+    
+public void RegisterDoor(DoorScript door, int doorID)
+{
+    if (!doorGroups.ContainsKey(doorID))
+    {
+        doorGroups[doorID] = new List<DoorScript>();
+    }
+    doorGroups[doorID].Add(door);
+}
+    
+public void ActivateDoors(int buttonID, bool open)
+{
+    if (doorGroups.ContainsKey(buttonID))
+    {
+        foreach (DoorScript door in doorGroups[buttonID])
+        {
+            door.SetDoorState(open);
+        }
+    }
+}
+</code></pre>
+<br>
+<p>
+    This allowed me to create a button prefab with a collision handler script that, when is triggered by the player, executes <br><br><pre><code class="language-csharp">DoorManager.Instance.ActivateDoors(buttonID, false);</code></pre>
+    <br>This requires buttonID and doorID to be manually set when the prefabs are placed in the level. There is also a script on the door prefab which controls movement and has a serialised doorID field.
+    <br>The door's movement is controlled programmatically.
+    <br><br><pre><code class="language-csharp">private void Update()
+        {
+            Vector3 targetPosition = isOpen ? openPosition : closedPosition; // ? is if isOpen is true and : is if isOpen is false
+            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
+        }</code></pre>
+</p> <br>
+<p>This can be seen functioning in <span>[1.4.3]</span></p>
+
+<img src="assets/rats/door.gif" alt="Door Demo 1.4.3" style="width: 1000px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.2</span>
+
+<br>
+            <section>
+                <h2>Reflection on Current Progress</h2>
+                <p>Development of Hangry Rats is mostly keeping pace with the weekly schedule we had planned. As of week 4, we have successfully prototyped core mechanics, such as the player controller, pickup system, door/button mechanics, enemy AI, and I also developed a win condition (when a specific number of pickups
+                    are collected, a door to the next level unlocks.
+                    <br>
+                    The things that still need implementing from weeks 3-4 include: spawning systems for ingredients and enemies, and the creation/design of more fun & thematic levels. 
+                    <br>
+                    With core systems complete, we're on track to delivering a suitable prototype that fits the brief when the 6 weeks are over, and the remaining weeks will be focused on creating puzzles, UI, and improving the gameloop.
+                </p>
+                <br>
+                <h3>Limitations/Failures</h3>
+                <br>
+                <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
+                    <br><br>
+                    For example, development felt mostly disorganised, due to poor communication and lack of leadership. In future group projects, I think it would be valuable
+                    to designate one person from each team (artists/developers) as the lead, and give them the role of managing everything and ensuring everything is organised, done on time, and that every system works together.
+                    <br><br>
+                    Using GitHub for version control hindered our progress from the beginning, as a lot of time was spent both setting it up and teaching everyone how to use it, however, progress speed quickly ramped up after we had all
+                    gotten used to how it works. Perhaps in future projects, Unity's own Version Control System would be preferable.
+                    <br><br>
+                    A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
+                    <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.
+                    <br><br>
+                    A lot of the systems I created do not work in every situation, due to a lack of polish. For example, if the Player & Rat stand on a button at the same time, when one of them steps off, the button thinks that it is deactivated. <br>
+                    I don't think this has a huge impact for a prototype, however it is still a notable limitation of my scripts. <br>
+                    I believe that this is fixable by tracking how many objects are on the button, and only deactivating it if the counter is zero, instead of on any OnTriggerExit2D event.
+                    <br><br><br>
+                    Based on these limitations I think the further 2/3 weeks of development time left will be enough to make everything functional as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
+                    want the game to have significant polish.
+
+                    An area I would need to research is how to use normal maps on 2D sprites and how to effectively light a 2D scene in a 3D 'world', as the current game has a very 'flat' and uninspiring look to it, which I believe would
+                    be greatly improved with more atmospheric lighting. Furthermore, I also need to research how to properly transition between animations on a sprite, for example between jumping, running, etc. This would make the game feel much more lively and fun.
+                </p>
+            </section>
+<br>
+            <section>
+                <h2>Further Development</h2>
+                <p>Following my reflection, I have outlined a weekly plan to ensure the project is fully playable before the 6 weeks are over:</p>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <b>Week 4 (cont.):</b>
+    -	Development & implementation of enemy & ingredient spawning
+    -	Design and build levels using the core mechanics already built
+    -   Build a functioning Main Menu & improved UI
+    -   Bugfix
+    <b>Week 5:</b>
+    -	Design a more appealing Main Menu & UI
+    -   Refine Character & Enemy animations & transitions
+    -   Implement normal maps where necessary
+    -	Design and build levels using the core mechanics already built
+    -   Bugfix
+    <b>Week 6:</b>
+    -	Light & polish up levels
+    -   Polish mechanics
+    -   Playtest
+    -   Bugfix
+</pre>
+            </section>
+<br>
+            <section>
+                <h2>Key Tasks & Dependencies</h2>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before lighting.
+<br>
+<b>Button Fix: </b>Must be completed before designing puzzles, as to not accidentally design something which is unplayable after the fix.
+<br>
+<b>Audio Clips: </b>Must be completed before implementation.
+</pre>
+            </section>
+<br>
+<section class="references" id="references">
+    <h3>References</h3>
+    <br>
+    <p>[1.2.2] Residential Area Tileset (2021). [Art]. Free Game Assets (GUI, Sprite, Tilesets). Retrieved from <a href="https://free-game-assets.itch.io/residential-area-tileset-pixel-art">https://free-game-assets.itch.io/residential-area-tileset-pixel-art</a></p>
+    <br>
+    <p>[1.2.3] pixel city (animated) 2 (2018). [Art]. Lazur. Retrieved from <a href="https://openclipart.org/detail/310402/pixel-city-animated-2">https://openclipart.org/detail/310402/pixel-city-animated-2</a></p>
+    <br>
+    <p>[1.2.4] Pixel art street with buildings, stores, trees and sky with clouds (n.d.). [Art]. Chuckchee | Dreamstime.com. Retrieved from <a href="https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669">https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669</a></p>
+    <br>
+</section>
+        </article>
+    </main>
+</body>
+</html>

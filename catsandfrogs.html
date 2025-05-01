@@ -13,7 +13,7 @@
 <body>
     <header>
         <nav>
-            <a href="#" class="logo">
+            <a href="index.html" class="logo">
                 <svg width="32" height="32" viewBox="0 0 62 57" xmlns="http://www.w3.org/2000/svg">
                     <g>
                         <rect width="10" height="57" fill="#f87338"/>
@@ -73,15 +73,15 @@
                 <div class="image-group">
                     <figure>
                         <img src="assets/catsandfrogs/Ref/megaxovels.png" alt="Reference 1">
-                        <span class="RefNum"><a href="#references">1.2.2</a></span>
+                        <span class="RefNum"><a href="#references">1.2.1</a></span>
                     </figure>
                     <figure>
                         <img src="assets/catsandfrogs/Ref/A+_bft.png" alt="Reference 2">
-                        <span class="RefNum"><a href="#references">1.2.3</a></span>
+                        <span class="RefNum"><a href="#references">1.2.2</a></span>
                     </figure>
                     <figure>
                         <img src="assets/catsandfrogs/Ref/this-is-pixel-art-32-v0-nkuzyqik9cic1.png" alt="Reference 3">
-                        <span class="RefNum"><a href="#references">1.2.4</a></span>
+                        <span class="RefNum"><a href="#references">1.2.3</a></span>
                     </figure>
                 </div>
                 <p>We then developed the ideas into a <strong>final setting concept</strong>: The towers in this game would be Cats, and the
@@ -226,6 +226,7 @@
 <p>The Drag-and-Drop function is handled by CardDragger.cs, each shop tile has its own instance of this script. When the shop tile is touched, if the requirements are met, it instantiates a preview image on the UI layer (to allow for smooth movement with
     the pixel perfect camera) which tracks the touch position, when let go, if it is over a grid square, <span>ShopSpawnScript.cs</span> handles spawning and deployment of the Cat.
 </p>
+<br>
 <pre><code class="language-csharp">private void HandleTouchBegan(Vector3 touchPosition, Touch touch)
 {
     if (!CameraController.atShop || !DragManager.isDragAllowed)
@@ -289,121 +290,126 @@ void LateUpdate()
 <img src="assets/catsandfrogs/inspectorShop.png" alt="Inspector 1.4.2" style="width: 600px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.2</span>
 <br>
-<p>I turned this player into a prefab, to ensure that it can be used in multiple scenes, but all edits affect all instances of the player.</p>
+<p>When developing this, I encountered bugs such as the preview not tracking to the touch position correctly, and the wrong Cat types being shown.
+    <br>I fixed these by moving the tracking code into <span>LateUpdate()</span>, which fixed the tracking, and I implemented the checking of <span>instanceID</span> to ensure that the dragging is being performed by the correct DragManager.cs
+</p>
 <br>
-<h3 class="responsibilities">- Item Pickup -</h3>
+<h3 class="responsibilities">- Scriptable Objects -</h3>
 <br>
-<p> Due to previous experience with a PowerUp Picku system in my Top-Down 3D Shooter project, I was very confident with making a working ingredient pickup mechanic.
-    Pickups are handled by PickUpController.cs, which serves as a manager for the pickup system using the Singleton pattern. It tracks the number of collectibles picked up,
-    persists between scenes via DontDestroyOnLoad, and communicates with the UI system to display the current count. The Singleton implementation ensures only one instance exists, preventing duplicate tracking and maintaining consistent state across the game.
+<p> To allow for the easy creation of new types/tiers of Cats and Frogs, I decided to use <span>Scriptable Objects</span> to hold the values and data for both the Cats and the Frogs.
+    Using this, it is easy to create a new entity by only modifying the values in the inspector
+    <br><br>
+    <p style="color:gray"><i>e.g. CatSO.cs</i></p>
 </p>
 <pre>
-    <code class="language-csharp">public static PickUpController Instance { get; private set; }
-
-private void Awake()
+    <code class="language-csharp">public enum CatType
 {
-    if (Instance == null)
-    {
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
-    else
-    {
-        Destroy(gameObject);
-    }
+    Gun,
+    Melee,
+    CoinCollector
 }
 
-private void Start()
+[CreateAssetMenu(fileName = "NewCat", menuName = "Game/Cat")]
+public class CatSO : ScriptableObject
 {
-    ResetPickups();
-}
+    [Header("Cat Info")]
+    public string catName;
+    public float delay;
+    public float health = 100;
+    public float waitTime = 1f;
 
-public void CollectPickup()
-{
-    pickUpCount++;
-    UpdateUI();
+    public Sprite idleSprite;
+    public Sprite altSprite;
+    public RuntimeAnimatorController animatorController;
+
+    [Header("Bullet Settings")]
+    public float damage = 10;
+    public float bulletSpeed = 5f;
+    public bool burstFire = false;
+    public int maxBurstShots = 3;
+    public float burstWait = 1f;
+
+    [Header("Cat Type")]
+    public CatType catMode;
 }
 </code></pre>
 <br>
-<p>To demo this, I made a SamplePickup prefab with tag "PickUp" on layer "PickUps". This object has a Circle Collider 2D component, with Is Trigger set to true.
-    <br>
-    In the Player's collision script, the CollectPickup() function is called if the player enters a trigger of object with tag "PickUp", increasing the count of pickups by 1, and updating UI.
-    Then, the other gameObject (in this case, the pickup) is destroyed.
-    <br><br> 
-    It may have been better to simply disable the gameObject, however this is only a prototype, and for our current levels, there is never a need to re-enable a pickup.
-    Only the Player layer can collide with the PickUps layer, preventing any unintentional triggers.
-    <br><br>
-    This system is seen functioning in <span>[1.4.1]</span>
+<p>This allows a developer or artist to easily modify the data for each Cat type. The values are editable in the inspector, and intuitive to modify. <span>[1.4.3]</span>
 </p>
+<img src="assets/catsandfrogs/CatSOInspector.png" alt="Inspector 1.4.2" style="width: 600px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.3</span>
 <br>
-<h3 class="responsibilities">- Buttons & Doors -</h3>
+<p>When instantiated, the entities take the data from the <span>Scriptable Objects</span> through a setup method. The desired SO is piped in, and the data is taken.</p>
 <br>
-<p>Before beginning to write code, I planned out what would be necessary for the buttons and doors to work as we had planned. 
-    <br>I came to the conclusion that there needed to be a way to have multiple doors activated by one button, and multiple buttons to activate one door, allowing for much more
-    unique level design and creative puzzles.
-    <br>
-    I decided to implement this using a DoorManager singleton that maintains a Dictionary mapping button IDs to lists of doors. This allows:
-</p>
-<br>
-    <ul>
-        <li>- Multiple doors to be registered to the same button ID</li>
-        <li>- One door to respond to multiple buttons</li>
-        <li>- Centralised control over door states through the DoorManager</li>
-        <li>- Easy activation of all doors tied to a specific ID</li>
-    </ul>
-<br>
+<p style="color:gray"><i>e.g. in CatController.cs</i></p>
 <pre>
-    <code class="language-csharp">public static DoorManager Instance { get; private set; }
-
-private Dictionary<int, List<DoorScript>> doorGroups = new Dictionary<int, List<DoorScript>>();
-    
-private void Awake()
+    <code class="language-csharp">public void SetupCat(CatSO catType)
 {
-    if (Instance == null)
+    healthScript.health = catType.health;
+    waitTime = catType.waitTime;
+    damage = catType.damage;
+    speed = catType.bulletSpeed;
+    delay = catType.delay;
+    burstFire = catType.burstFire;
+    maxShotsBurst = catType.maxBurstShots;
+    burstWait = catType.burstWait;
+
+    animationController.Initialise(catType.idleSprite, catType.altSprite, catType.animatorController);
+    if (catType.catMode == CatType.CoinCollector)
     {
-        Instance = this;
+        binCatScript.enabled = true;
+        binCatScript.InitialiseBinCat(waitTime);
     }
     else
     {
-        Destroy(gameObject);
+        binCatScript.enabled = false;
     }
+    StartCoroutine(AttackAndWait(delay, waitTime));
 }
-    
-public void RegisterDoor(DoorScript door, int doorID)
+</code></pre>
+<br>
+<h3 class="responsibilities">- Projectiles -</h3>
+<br>
+<p>I had had previous experience with projectile-based weapon fire in my earlier project <span>3D Top-Down Shooter</span>, and I wanted something similar for this
+    project, so the projectile system ended up as being an instantiated prefab with scripts that handle movement, collision, and time of life.
+    <br>
+    The collision is handled by a <span>CircleCollider2D</span> set to Trigger, and when it collides with an object on the Frogs layer, if the tag is "Frog", it
+    finds the <span>EnemyController.cs</span> script on the collided gameObject, and calls the <span>TakeDamage(float damage)</span> function in the enemyController, then destroys itself.
+    The collision script also holds a static float for damage, which can be set by calling the <span>SetDamage(float newDamage)</span> function in ProjectileCollision.cs
+    <br><br>
+    The firing of projectiles is handled by a script that is on the universal CatPrefab, and is enabled or disabled dependent on the CatType from the CatSO.
+    <br>
+    Whenit is called in the <span>AttackAndWait()</span> function, it instantiates and sets up the projectile.
+</p>
+<pre>
+    <code class="language-csharp">public class ProjectileFire : MonoBehaviour
 {
-    if (!doorGroups.ContainsKey(doorID))
+    [SerializeField] GameObject prefab;
+    [SerializeField] Transform firePoint;
+    private ProjectileCollision projCollisionScript;
+    public void Fire(float damage, float speed)
     {
-        doorGroups[doorID] = new List<DoorScript>();
-    }
-    doorGroups[doorID].Add(door);
-}
-    
-public void ActivateDoors(int buttonID, bool open)
-{
-    if (doorGroups.ContainsKey(buttonID))
-    {
-        foreach (DoorScript door in doorGroups[buttonID])
+        PlaySound();
+        GameObject projectile = Instantiate(prefab, firePoint.position, Quaternion.identity);
+        projCollisionScript = projectile.GetComponent<ProjectileCollision>();
+
+        projCollisionScript.SetDamage(damage);
+
+        ProjectileMovement movement = projectile.GetComponent<ProjectileMovement>();
+        if (movement != null)
         {
-            door.SetDoorState(open);
+            movement.SetupProjectile(damage, speed);
         }
+    }
+
+    private void PlaySound()
+    {
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.Instance.gunFire);
     }
 }
 </code></pre>
 <br>
 <p>
-    This allowed me to create a button prefab with a collision handler script that, when is triggered by the player, executes <br><br><pre><code class="language-csharp">DoorManager.Instance.ActivateDoors(buttonID, false);</code></pre>
-    <br>This requires buttonID and doorID to be manually set when the prefabs are placed in the level. There is also a script on the door prefab which controls movement and has a serialised doorID field.
-    <br>The door's movement is controlled programmatically.
-    <br><br><pre><code class="language-csharp">private void Update()
-        {
-            Vector3 targetPosition = isOpen ? openPosition : closedPosition; // ? is if isOpen is true and : is if isOpen is false
-            transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * openSpeed);
-        }</code></pre>
-</p> <br>
-<p>This can be seen functioning in <span>[1.4.3]</span></p>
-
-<img src="assets/rats/door.gif" alt="Door Demo 1.4.3" style="width: 1000px; border-radius: 8px; margin: 20px 0;">
-<span class="RefNum">1.4.2</span>
 
 <br>
             <section>

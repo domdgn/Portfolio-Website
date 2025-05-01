@@ -42,7 +42,7 @@
                 <p><span>My Role:</span> Developer & Concept Artist</p>
                 <p><span>Software Used:</span> Unity, C#, Aseprite</p>
                 <img src="images/CatsandFrogsCover.jpg" alt="Project Overview" class="finalimg">
-                <h3><a href="https://github.com/domdgn/Cats-And-Frogs">Download APK</a></h3>
+                <h3><a href="https://github.com/domdgn/Cats-and-Frogs/releases/download/v1.0/CatsAndFrogsShip.apk">Download APK</a></h3>
                 <span><a href="https://github.com/domdgn/Cats-And-Frogs">GitHub</a></span>
             </section>
             <br><br>
@@ -194,7 +194,7 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
 }
 </code></pre>
 <br>
-<p>I also created a separate scene, where I developed the Drag-and-Drop system, another key mechanic. I ended up creating a DragManager.cs, which handles whether dragging is allowed, if the player is currently dragging, etc. 
+<p>I also created a separate scene, where I developed the <span>Drag-and-Drop</span> system, another key mechanic. I ended up creating a <span>DragManager.cs</span>, which handles whether dragging is allowed, if the player is currently dragging, etc. 
 </p>
 
 <pre>
@@ -208,7 +208,7 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
 </code></pre>
 <br>
 <p>
-    I separated out the touch functions from the grid system to a TouchManager.cs to separate concerns. This invokes <span>Unity Events</span> that are used by all scripts involving
+    I separated out the touch functions from the grid system to a <span>TouchManager.cs</span> to separate concerns. This invokes <span>Unity Events</span> that are used by all scripts involving
     touch input.
 </p><br>
 <pre><code class="language-csharp">private void Update()
@@ -303,7 +303,7 @@ void LateUpdate()
 }
 </code></pre>
 <br>
-<img src="assets/catsandfrogs/catandfrog-ezgif.com-video-to-gif-converter.gif" alt="Drag and Drop" style="width: 300px; border-radius: 8px; margin: 20px 0;">
+<img src="assets/catsandfrogs/DragBug.gif" alt="Drag and Drop" style="width: 300px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.2</span>
 <img src="assets/catsandfrogs/inspectorShop.png" alt="Inspector" style="width: 600px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.3</span>
@@ -386,7 +386,69 @@ public class CatSO : ScriptableObject
 }
 </code></pre>
 <br>
+<h3 class="responsibilities">- Frog Controller -</h3>
+<br>
+<p>The plan for the movement for the frogs was simple - at a set interval determined by the <span>FrogSO</span>, the frog will jump
+one Grid Tile forwards, until it detects a Cat in its way. Whilst it is moving, at another set interval, the frog performs its attack.
+<br><br>
+The section of code below controls how a frog (<span>enemy</span>) moves in the game. It makes the frog wait for a bit (<span>waitTime</span>) before checking if it can move down a space. If the space isn't blocked, it starts moving toward that spot at a set speed. Once it reaches the spot, it waits again, and the process repeats. Each move reduces the frog's distance to the end, and when it reaches the end (distToEnd is 0), it triggers <span>AtEnd()</span>. It also keeps track of which grid spaces are occupied or cleared.
+<br><br>
+I chose this approach to create a simple, timed grid-based movement system for the frogs that allows controlled pacing, prevents overlapping, and triggers events when they reach the pond.
+<br><br>
+<i>This is shown in <span>[1.4.5]</span></i>
+</p>
+<br>
+<pre><code class="language-csharp">void Update()
+{
+    if (enemyData == null) return;
+
+    timer += Time.deltaTime;
+
+    if (isWaiting)
+    {
+        if (timer >= waitTime)
+        {
+            timer = 0f;
+
+            nextPosition = new Vector2(transform.position.x, transform.position.y - moveDistance); 
+
+            if (!ContainerHandler.IsPositionOccupied(nextPosition))
+            {
+                isWaiting = false;
+                nextPosition = new Vector3(nextPosition.x, nextPosition.y, transform.position.z);
+                ContainerHandler.ClearPosition(currentGridPosition);
+            }
+        }
+    }
+    else
+    {
+        float step = enemyData.moveSpeed * Time.deltaTime;
+        transform.position = Vector3.MoveTowards(transform.position, nextPosition, step);
+        ContainerHandler.OccupyPosition(nextPosition, gameObject);
+
+        if (Vector3.Distance(transform.position, nextPosition) < 0.01f)
+        {
+            transform.position = nextPosition;
+            isWaiting = true;
+            timer = 0f;
+            distToEnd -= 1;
+
+            if (distToEnd == 0)
+            {
+                AtEnd();
+            }
+
+            currentGridPosition = new Vector2(transform.position.x, transform.position.y);
+        }
+    }
+}
+</code>
+</pre>
+<br>
 <h3 class="responsibilities">- Projectiles -</h3>
+<br>
+<img src="assets/catsandfrogs/Projectiles.gif" alt="Projectiles" style="width: 300px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.5</span>
 <br>
 <p>I had had previous experience with projectile-based weapon fire in my earlier project <span>3D Top-Down Shooter</span>, and I wanted something similar for this
     project, so the projectile system ended up as being an instantiated prefab with scripts that handle movement, collision, and time of life.
@@ -431,7 +493,7 @@ public class CatSO : ScriptableObject
 <br>
 <p> The way I handled health in the game is very simple. Every entity that has health has the <span>HealthScript.cs</span> component.
     When the <span>TakeDamage()</span> function is called in the respective Controller, it then calls the <span>TakeDamage()</span> in the HealthScript, along with checking whether the health is <= 0
-    and executing the correct code
+    and executing the correct code.
 </p>
 <pre>
     <code class="language-csharp">public class HealthScript : MonoBehaviour
@@ -458,12 +520,15 @@ public class CatSO : ScriptableObject
 <br>
 <h3 class="responsibilities">- Shop & Currency -</h3>
 <br>
+<img src="assets/catsandfrogs/ShopDemo.gif" alt="Shop Demo" style="width: 300px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.6</span>
+<br>
 <p>Each ShopTile has its own <span>ShopSpawnScript.cs</span> component which handles the spawning and deployment of Cats into the grid, by instantiating the prefab at the <span>Vector2 position</span> of the Grid Tile if it isn't occupied, and then occupying the space using the previous
 <span>OccupyPosition()</span> function.
-<br>
+<br><br>
 It then calls the <span>SetupCat()</span> method and passes through the designated <span>CatSO</span>, which is defined in the inspector of the Shop Tile.
 <br>
-This happens if the player has enough <i>Currency</i>, which is managed in a <span>CurrencyManager.cs</span> following the <i>Singleton Pattern</i>
+This happens if the player has enough <i>Currency</i>, which is managed in a <span>CurrencyManager.cs</span>.
 </p>
 <br>
 <pre>
@@ -510,26 +575,23 @@ public void UpdateCurrency()
 }
 </code>    
 </pre>
+<p>I implemented a persistent currency manager using the <span>singleton pattern</span> to ensure only one instance exists across scenes. This system centralizes coin tracking, automatically updates the UI on value changes, and broadcasts coin balance updates via an event system (<span>OnBalanceUpdated</span>). It includes methods to set, spend, and retrieve the coin count, ensuring clean integration with other systems like the game UI. This approach provides modularity and scalability.</p>
 <br>
 <section>
-    <h2>Reflection on Current Progress</h2>
-    <p>Development of Hangry Rats is mostly keeping pace with the weekly schedule we had planned. As of week 4, we have successfully prototyped core mechanics, such as the player controller, pickup system, door/button mechanics, enemy AI, and I also developed a win condition (when a specific number of pickups
-        are collected, a door to the next level unlocks.
-        <br>
-        The things that still need implementing from weeks 3-4 include: spawning systems for ingredients and enemies, and the creation/design of more fun & thematic levels. 
-        <br>
-        With core systems complete, we're on track to delivering a suitable prototype that fits the brief when the 6 weeks are over, and the remaining weeks will be focused on creating puzzles, UI, and improving the gameloop.
+    <h2>1.5 Reflection</h2>
+    <p>Development of Cats and Frogs ran mostly smoothly. I kept pace with the schedule that I had planned for myself, and achieved the majority of my goals to a reasonable standard. When it came time to present our game, my tutor referred to it as a "medium-fidelity final product"
+        <br><br>
+        This shows that we successfully developed a working tower-defense game for Android devices that performs well on real hardware and is a fully playable game. Whilst we achieved what the brief required of us, there are a lot of improvements that could've been made along the way.
     </p>
     <br>
     <h3>Limitations/Failures</h3>
     <br>
     <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
         <br><br>
-        For example, development felt mostly disorganised, due to poor communication and lack of leadership. In future group projects, I think it would be valuable
-        to designate one person from each team (artists/developers) as the lead, and give them the role of managing everything and ensuring everything is organised, done on time, and that every system works together.
+        Being a solo developer entirely eliminates the problem of poor communication, which is a positive. However, it also led to a lot of poor code organisation, as well as rushing some key features. This is in part due to the high workload as the sole developer, but also
+        due to poor planning of systems and their interactions, due to lack of experience. This led to a lot of technical debt, meaning that it would be unecessarily difficult to expand on this game to completely polish and finish it, as some systems would ideally be completely rewritten and re-thought-out.
         <br><br>
-        Using GitHub for version control hindered our progress from the beginning, as a lot of time was spent both setting it up and teaching everyone how to use it, however, progress speed quickly ramped up after we had all
-        gotten used to how it works. Perhaps in future projects, Unity's own Version Control System would be preferable.
+        The art team were not fully aware of exactly what sprites and images were needed at what time. This led to me having to create some prototype artwork for the UI
         <br><br>
         A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
         <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.

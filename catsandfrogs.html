@@ -45,6 +45,7 @@
                 <h3><a href="https://github.com/domdgn/Cats-and-Frogs/releases/download/v1.0/CatsAndFrogsShip.apk">Download APK</a></h3>
                 <span><a href="https://github.com/domdgn/Cats-And-Frogs">GitHub</a></span>
             </section>
+
             <br><br>
             <h1>Section 1 | Conception & Goal</h1>
             <section>
@@ -86,7 +87,14 @@
                     </figure>
                 </div>
                 <p>We then developed the ideas into a <strong>final setting concept</strong>: The towers in this game would be Cats, and the
-                    enemies would be Frogs, and the goal is to defend a pond from the incoming frogs..</p>
+                    enemies would be Frogs, and the goal is to defend a pond from the waves of incoming frogs. You can place cats that have weapons, such as pistols, and there is also a cat type that rummages through a bin and gathers coins every so often.
+                </p>
+                <br>
+                <p>We then gathered on Discord and quickly developed concept art for what we want the game to look like, and the art style, for example:</p>
+                <div class="image-group-new">
+                    <img src="assets/catsandfrogs/beautifulMockUp.png" alt="Block Out Progress" style="border-radius: 8px; margin: 20px;">
+                    <img src="assets/catsandfrogs/Frawg.png" alt="Clay Render" style="border-radius: 8px; margin: 20px;">
+                </div>
             </section>
 <br><br>
             <section>
@@ -145,7 +153,9 @@
     The occupancy of each Grid Tile is tracked in a <span>Dictionary</span> which contains both the <span>Vector2 position</span> and <span>GameObject</span> of
     each deployed entity.
 </p>
+
 <br>
+
 <pre>
 <code class="language-csharp">private static Dictionary<Vector2, GameObject> occupiedPositions = new Dictionary<Vector2, GameObject>();
 
@@ -154,10 +164,14 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
     occupiedPositions[position] = obj;
 }   
 </code></pre>
+
 <br>
+
 <img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Tap Demo" style="width: 300px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.1</span>
+
 <br>
+
 <pre>
 <code class="language-csharp">void Update()
 {
@@ -193,7 +207,9 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
     }
 }
 </code></pre>
+
 <br>
+
 <p>I also created a separate scene, where I developed the <span>Drag-and-Drop</span> system, another key mechanic. I ended up creating a <span>DragManager.cs</span>, which handles whether dragging is allowed, if the player is currently dragging, etc. 
 </p>
 
@@ -206,11 +222,16 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
     public static int currentDraggingId = -1;
 }
 </code></pre>
+
 <br>
+
 <p>
     I separated out the touch functions from the grid system to a <span>TouchManager.cs</span> to separate concerns. This invokes <span>Unity Events</span> that are used by all scripts involving
     touch input.
-</p><br>
+</p>
+
+<br>
+
 <pre><code class="language-csharp">private void Update()
 {
     if (Input.touchCount <= 0) return;
@@ -238,11 +259,15 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
     }
 }
 </code></pre>
+
 <br>
+
 <p>The Drag-and-Drop function is handled by CardDragger.cs, each shop tile has its own instance of this script. When the shop tile is touched, if the requirements are met, it instantiates a preview image on the UI layer (to allow for smooth movement with
     the pixel perfect camera) which tracks the touch position, when let go, if it is over a grid square, <span>ShopSpawnScript.cs</span> handles spawning and deployment of the Cat.
 </p>
+
 <br>
+
 <pre><code class="language-csharp">private void HandleTouchBegan(Vector3 touchPosition, Touch touch)
 {
     if (!CameraController.atShop || !DragManager.isDragAllowed)
@@ -591,68 +616,75 @@ public void UpdateCurrency()
         Being a solo developer entirely eliminates the problem of poor communication, which is a positive. However, it also led to a lot of poor code organisation, as well as rushing some key features. This is in part due to the high workload as the sole developer, but also
         due to poor planning of systems and their interactions, due to lack of experience. This led to a lot of technical debt, meaning that it would be unecessarily difficult to expand on this game to completely polish and finish it, as some systems would ideally be completely rewritten and re-thought-out.
         <br><br>
-        The art team were not fully aware of exactly what sprites and images were needed at what time. This led to me having to create some prototype artwork for the UI
+        The art team were not fully aware of exactly what sprites and images were needed at what time. This led to me having to create some prototype artwork for the UI - this led to a lack of focus and a lack of time - contributing to the somewhat rushed systems.
         <br><br>
-        A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
-        <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.
+        A personal failure of mine is that I spent too long working on the drag and drop system. Whilst it is vital to the game, so having a rigid drag and drop system is very important, I could have used an asset from the Unity Asset store instead, and spent more time working
+        on the bespoke systems, both refining them and creating more in-depth gameplay.
         <br><br>
-        A lot of the systems I created do not work in every situation, due to a lack of polish. For example, if the Player & Rat stand on a button at the same time, when one of them steps off, the button thinks that it is deactivated. <br>
-        I don't think this has a huge impact for a prototype, however it is still a notable limitation of my scripts. <br>
-        I believe that this is fixable by tracking how many objects are on the button, and only deactivating it if the counter is zero, instead of on any OnTriggerExit2D event.
-        <br><br><br>
-        Based on these limitations I think the further 2/3 weeks of development time left will be enough to make everything functional as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
+        The prototype focused on core mechanics, lacking advanced features such as more varied enemy types/classes or power-ups. UI elements could benefit from enhanced visual feedback and animations.
+        <br><br>
+        The majority of the shortcomings of Cats and Frogs boil down to poor planning and poor time management, which is something I need to work on for future projects. It is entirely possible to fix these issues in Cats and Frogs, and allow for it to be expanded into a full-fledged game, by reworking the core systems from the ground up. Despite this, the project reached its goals in the allotted time.
+        <br><br>
+        Based on these limitations I think a further 6 weeks of focused development time left would be enough to make everything functional and scalable, as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
         want the game to have significant polish.
-
-        An area I would need to research is how to use normal maps on 2D sprites and how to effectively light a 2D scene in a 3D 'world', as the current game has a very 'flat' and uninspiring look to it, which I believe would
-        be greatly improved with more atmospheric lighting. Furthermore, I also need to research how to properly transition between animations on a sprite, for example between jumping, running, etc. This would make the game feel much more lively and fun.
+        <br><br>
+        Areas I need to research include UI and UX design for mobile games, as well as mobile performance optimisation and profiling. This would allow me to design intuitive and engaging interfaces specifically tailored for mobile platforms, and ensure that my games can run
+        smoothly on even low-end devices, and I can use that knowledge of memory management and efficient rendering techniques in all aspects of gamedev.
+        <br><br>
+        Further, I definitely need to research into system planning. Effective system planning ensures that a game's mechanics are not only cohesive and functional, but easier to build on top of and add new features. This would have helped in this project as I would have been able to add all the planned enemy types, such as long-ranged Wizard Frogs, and bosses with special attacks.
     </p>
 </section>
 <br>
-            <section>
-                <h2>Further Development</h2>
-                <p>Following my reflection, I have outlined a weekly plan to ensure the project is fully playable before the 6 weeks are over:</p>
+<img src="assets/catsandfrogs/GameDemoFull.gif" alt="Final Demo" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<br>
+
+<section>
+<h2>1.6 Further Development</h2>
+<p>Following my reflection, I have outlined a plan that I could follow to rework the game from the ground up:</p>
 <pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-    <b>Week 4 (cont.):</b>
-    -	Development & implementation of enemy & ingredient spawning
-    -	Design and build levels using the core mechanics already built
-    -   Build a functioning Main Menu & improved UI
-    -   Bugfix
-    <b>Week 5:</b>
-    -	Design a more appealing Main Menu & UI
-    -   Refine Character & Enemy animations & transitions
-    -   Implement normal maps where necessary
-    -	Design and build levels using the core mechanics already built
-    -   Bugfix
-    <b>Week 6:</b>
-    -	Light & polish up levels
-    -   Polish mechanics
-    -   Playtest
-    -   Bugfix
+    <b>Sprint 1:</b>
+    -	Strip game down to its core mechanics, preserving best-performing scripts
+    -   Replace Touch Handling with a more optimised premade asset
+    -   Redesign and rewrite grid system for performance
+    -   Rewrite placement system to make more intuitive
+    <b>Sprint 2:</b>
+    -	Using the new grid and placement, rewrite the shop spawning to be controlled by a single manager
+    -   Rework player and Enemy Controllers
+    -   Rewrite attack system
+    <b>Sprint 3:</b>
+    -	Polish up previous scripts
+    -   Create all new types of entities
+    -   Polish UI
 </pre>
-            </section>
+</section>
+
 <br>
-            <section>
-                <h2>Key Tasks & Dependencies</h2>
+
+<section>
+<h2>1.7 Key Tasks & Dependencies</h2>
 <pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before lighting.
+<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before background elements can be added.
 <br>
-<b>Button Fix: </b>Must be completed before designing puzzles, as to not accidentally design something which is unplayable after the fix.
+<b>Shop System: </b>Must be entirely reworked before expanding scope, as it is very hard to build upon right now.
 <br>
-<b>Audio Clips: </b>Must be completed before implementation.
+<b>Animations: </b>I could not get sprite animations working correctly, this needs to be fixed before the game can be considered polished.
 </pre>
-            </section>
+</section>
+
 <br>
+
 <section class="references" id="references">
     <h3>References</h3>
     <br>
-    <p>[1.2.2] Residential Area Tileset (2021). [Art]. Free Game Assets (GUI, Sprite, Tilesets). Retrieved from <a href="https://free-game-assets.itch.io/residential-area-tileset-pixel-art">https://free-game-assets.itch.io/residential-area-tileset-pixel-art</a></p>
+    <p>[1.2.1] How to Make a Pixel Art Frog (2023). [Art]. Go Real Games, LLC. Retrieved from <a href="https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/">https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/</a></p>
     <br>
-    <p>[1.2.3] pixel city (animated) 2 (2018). [Art]. Lazur. Retrieved from <a href="https://openclipart.org/detail/310402/pixel-city-animated-2">https://openclipart.org/detail/310402/pixel-city-animated-2</a></p>
+    <p>[1.2.2] Pixel Art Top Down - Basic. [Art]. Cainos. Retrieved from <a href="https://cainos.itch.io/pixel-art-top-down-basic">https://cainos.itch.io/pixel-art-top-down-basic/</a></p>
     <br>
-    <p>[1.2.4] Pixel art street with buildings, stores, trees and sky with clouds (n.d.). [Art]. Chuckchee | Dreamstime.com. Retrieved from <a href="https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669">https://www.dreamstime.com/pixel-art-street-buildings-stores-trees-sky-clouds-image99878669</a></p>
+    <p>[1.2.4] This is Pixel Art 32 (2024). [Art]. The_PixelPrysm. Retrieved from <a href="https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/">https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/</a></p>
     <br>
 </section>
-        </article>
-    </main>
+
+</article>
+</main>
 </body>
 </html>

@@ -41,10 +41,11 @@
                 <p><span>Date Started:</span> 28th January 2025</p>
                 <p><span>My Role:</span> Developer & Concept Artist</p>
                 <p><span>Software Used:</span> Unity, C#, Aseprite</p>
-                <p><span><a href="https://github.com/domdgn/Cats-And-Frogs">GitHub</a></span></p>
                 <img src="images/CatsandFrogsCover.jpg" alt="Project Overview" class="finalimg">
+                <h3><a href="https://github.com/domdgn/Cats-And-Frogs">Download APK</a></h3>
+                <span><a href="https://github.com/domdgn/Cats-And-Frogs">GitHub</a></span>
             </section>
-            <br>
+            <br><br>
             <h1>Section 1 | Conception & Goal</h1>
             <section>
                 <h2>1.1 Introduction & Goal</h2>
@@ -52,7 +53,7 @@
                     <br><br>
                     The goal is to develop a functioning prototype of a game. The brief was as follows: 
                     <br>
-                    "Working in teams, create a <span>tower defense</span> game targeted at mobile devices, with <span>high performance</span>."
+                    <b style="color: rgb(101, 141, 9);">"Working in teams, create a tower defense game targeted at mobile devices, with high performance."</b>
                     <br><br>
                     My role in this project was as <span>Developer</span>.
                     <br><br>
@@ -69,7 +70,7 @@
                     our game to draw heavy inspiration from <span>Plants vs. Zombies</span>, but be adapted into a vertical format, with <span>retro</span> design elements.
                 </p>
                 <br>
-                <p>As a team we quickly pulled together some reference art:</p>
+                <p>As a team, together, we found some reference art online:</p>
                 <div class="image-group">
                     <figure>
                         <img src="assets/catsandfrogs/Ref/megaxovels.png" alt="Reference 1">
@@ -109,7 +110,7 @@
                 <p>As the sole developer, I planned my own schedule, and broke down the key features needed for a working prototype into the allotted time.</p>
                 
 <pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-    <h3>Development Timeline Overview:</h3>
+<h3>Development Timeline Overview:</h3>
     <b>Week 1: Conceptualisation</b>
     -	Research, concept art
     -	Solidify gameloop and concept
@@ -127,19 +128,30 @@
     -	Create functional shop
     -   Fix bugs
     -   Functional UI
-    <b>Week 6: Final presentation and individual reflections</b>
+    <b>Week 6: End of Year Show and individual reflections</b>
 </pre>
                 
 <h3 class="responsibilities">- Grid System -</h3>
 <br>
-                <p>My first task was to develop the grid system that would be fundamental to the games mechanics.
-                    <br><br>
-                    My first iteration of the grid system was very simple, only allowing for placement and removal of a temporary prefab. <span>[1.4.1]</span>
-                    <br>I first created a demo scene with containers in a Grid Layout Group, with a BoxCollider2D, and the GridSquare tag.
-                </p>
+<p>My first task was to develop the grid system that would be fundamental to the games mechanics.
+    <br><br>
+    My first iteration of the grid system was very simple, only allowing for placement and removal of a temporary prefab. <span>[1.4.1]</span>
+    <br>I first created a demo scene with containers in a Grid Layout Group, with a BoxCollider2D, and the GridSquare tag.
+    <br><br>
+    The occupancy of each Grid Tile is tracked in a <span>Dictionary</span> which contains both the <span>Vector2 position</span> and <span>GameObject</span> of
+    each deployed entity.
+</p>
+<br>
+<pre>
+<code class="language-csharp">private static Dictionary<Vector2, GameObject> occupiedPositions = new Dictionary<Vector2, GameObject>();
 
-                <br>
-                <img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Controller Demo 1.4.1" style="width: 200px; border-radius: 8px; margin: 20px 0;">
+public static void OccupyPosition(Vector2 position, GameObject obj)
+{
+    occupiedPositions[position] = obj;
+}   
+</code></pre>
+<br>
+<img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Controller Demo 1.4.1" style="width: 300px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.1</span>
 <br>
 <pre>
@@ -177,7 +189,7 @@
     }
 }
 </code></pre>
-<br><br>
+<br>
 <p>I also created a separate scene, where I developed the Drag-and-Drop system, another key mechanic. I ended up creating a DragManager.cs, which handles whether dragging is allowed, if the player is currently dragging, etc. 
 </p>
 
@@ -409,43 +421,124 @@ public class CatSO : ScriptableObject
 }
 </code></pre>
 <br>
-<p>
-
+<h3 class="responsibilities">- Health -</h3>
 <br>
-            <section>
-                <h2>Reflection on Current Progress</h2>
-                <p>Development of Hangry Rats is mostly keeping pace with the weekly schedule we had planned. As of week 4, we have successfully prototyped core mechanics, such as the player controller, pickup system, door/button mechanics, enemy AI, and I also developed a win condition (when a specific number of pickups
-                    are collected, a door to the next level unlocks.
-                    <br>
-                    The things that still need implementing from weeks 3-4 include: spawning systems for ingredients and enemies, and the creation/design of more fun & thematic levels. 
-                    <br>
-                    With core systems complete, we're on track to delivering a suitable prototype that fits the brief when the 6 weeks are over, and the remaining weeks will be focused on creating puzzles, UI, and improving the gameloop.
-                </p>
-                <br>
-                <h3>Limitations/Failures</h3>
-                <br>
-                <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
-                    <br><br>
-                    For example, development felt mostly disorganised, due to poor communication and lack of leadership. In future group projects, I think it would be valuable
-                    to designate one person from each team (artists/developers) as the lead, and give them the role of managing everything and ensuring everything is organised, done on time, and that every system works together.
-                    <br><br>
-                    Using GitHub for version control hindered our progress from the beginning, as a lot of time was spent both setting it up and teaching everyone how to use it, however, progress speed quickly ramped up after we had all
-                    gotten used to how it works. Perhaps in future projects, Unity's own Version Control System would be preferable.
-                    <br><br>
-                    A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
-                    <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.
-                    <br><br>
-                    A lot of the systems I created do not work in every situation, due to a lack of polish. For example, if the Player & Rat stand on a button at the same time, when one of them steps off, the button thinks that it is deactivated. <br>
-                    I don't think this has a huge impact for a prototype, however it is still a notable limitation of my scripts. <br>
-                    I believe that this is fixable by tracking how many objects are on the button, and only deactivating it if the counter is zero, instead of on any OnTriggerExit2D event.
-                    <br><br><br>
-                    Based on these limitations I think the further 2/3 weeks of development time left will be enough to make everything functional as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
-                    want the game to have significant polish.
+<p> The way I handled health in the game is very simple. Every entity that has health has the <span>HealthScript.cs</span> component.
+    When the <span>TakeDamage()</span> function is called in the respective Controller, it then calls the <span>TakeDamage()</span> in the HealthScript, along with checking whether the health is <= 0
+    and executing the correct code
+</p>
+<pre>
+    <code class="language-csharp">public class HealthScript : MonoBehaviour
+{
+    public float health;
 
-                    An area I would need to research is how to use normal maps on 2D sprites and how to effectively light a 2D scene in a 3D 'world', as the current game has a very 'flat' and uninspiring look to it, which I believe would
-                    be greatly improved with more atmospheric lighting. Furthermore, I also need to research how to properly transition between animations on a sprite, for example between jumping, running, etc. This would make the game feel much more lively and fun.
-                </p>
-            </section>
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+        AudioPlayer.Instance.PlaySFX(AudioPlayer.Instance.hurt);
+    }
+
+    public void AddHealth(float healthToAdd)
+    {
+        health += healthToAdd;
+    }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+}
+</code></pre>
+<br>
+<h3 class="responsibilities">- Shop & Currency -</h3>
+<br>
+<p>Each ShopTile has its own <span>ShopSpawnScript.cs</span> component which handles the spawning and deployment of Cats into the grid, by instantiating the prefab at the <span>Vector2 position</span> of the Grid Tile if it isn't occupied, and then occupying the space using the previous
+<span>OccupyPosition()</span> function.
+<br>
+It then calls the <span>SetupCat()</span> method and passes through the designated <span>CatSO</span>, which is defined in the inspector of the Shop Tile.
+<br>
+This happens if the player has enough <i>Currency</i>, which is managed in a <span>CurrencyManager.cs</span> following the <i>Singleton Pattern</i>
+</p>
+<br>
+<pre>
+<code class="language-csharp">void Awake()
+{
+    if (Instance == null)
+    {
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }
+    else
+    {
+        Destroy(gameObject);
+    }
+
+    GameUIMgr = FindObjectOfType<GameUIMgr>();
+    SendCointCountToUI();
+    OnBalanceUpdated?.Invoke(coinCount);
+}
+public void SetMoney(int newCoinCount)
+{
+    coinCount = newCoinCount;
+    OnBalanceUpdated?.Invoke(coinCount);
+    SendCointCountToUI();
+}
+
+private void SendCointCountToUI()
+{
+    GameUIMgr.UpdateCoinCount(coinCount);
+}
+
+public void SpendMoney(int moneySpent)
+{
+    coinCount -= moneySpent;
+    OnBalanceUpdated?.Invoke(coinCount);
+    SendCointCountToUI();
+}
+
+public int GetCoinCount() { return coinCount; }
+
+public void UpdateCurrency()
+{
+    OnBalanceUpdated?.Invoke(coinCount);
+}
+</code>    
+</pre>
+<br>
+<section>
+    <h2>Reflection on Current Progress</h2>
+    <p>Development of Hangry Rats is mostly keeping pace with the weekly schedule we had planned. As of week 4, we have successfully prototyped core mechanics, such as the player controller, pickup system, door/button mechanics, enemy AI, and I also developed a win condition (when a specific number of pickups
+        are collected, a door to the next level unlocks.
+        <br>
+        The things that still need implementing from weeks 3-4 include: spawning systems for ingredients and enemies, and the creation/design of more fun & thematic levels. 
+        <br>
+        With core systems complete, we're on track to delivering a suitable prototype that fits the brief when the 6 weeks are over, and the remaining weeks will be focused on creating puzzles, UI, and improving the gameloop.
+    </p>
+    <br>
+    <h3>Limitations/Failures</h3>
+    <br>
+    <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
+        <br><br>
+        For example, development felt mostly disorganised, due to poor communication and lack of leadership. In future group projects, I think it would be valuable
+        to designate one person from each team (artists/developers) as the lead, and give them the role of managing everything and ensuring everything is organised, done on time, and that every system works together.
+        <br><br>
+        Using GitHub for version control hindered our progress from the beginning, as a lot of time was spent both setting it up and teaching everyone how to use it, however, progress speed quickly ramped up after we had all
+        gotten used to how it works. Perhaps in future projects, Unity's own Version Control System would be preferable.
+        <br><br>
+        A personal failure of mine is that I spent too long working on the concept of the game, instead of quickly diving into developing core mechanics that would definitely be usable in any scenario (e.g. a Character Controller).
+        <br>This caused the other developer a small delay before he could begin proper progress on his enemy AI system, and offset us as a team from our timeline goals.
+        <br><br>
+        A lot of the systems I created do not work in every situation, due to a lack of polish. For example, if the Player & Rat stand on a button at the same time, when one of them steps off, the button thinks that it is deactivated. <br>
+        I don't think this has a huge impact for a prototype, however it is still a notable limitation of my scripts. <br>
+        I believe that this is fixable by tracking how many objects are on the button, and only deactivating it if the counter is zero, instead of on any OnTriggerExit2D event.
+        <br><br><br>
+        Based on these limitations I think the further 2/3 weeks of development time left will be enough to make everything functional as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
+        want the game to have significant polish.
+
+        An area I would need to research is how to use normal maps on 2D sprites and how to effectively light a 2D scene in a 3D 'world', as the current game has a very 'flat' and uninspiring look to it, which I believe would
+        be greatly improved with more atmospheric lighting. Furthermore, I also need to research how to properly transition between animations on a sprite, for example between jumping, running, etc. This would make the game feel much more lively and fun.
+    </p>
+</section>
 <br>
             <section>
                 <h2>Further Development</h2>

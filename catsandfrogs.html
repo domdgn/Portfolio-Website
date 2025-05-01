@@ -130,6 +130,10 @@
     -   Functional UI
     <b>Week 6: End of Year Show and individual reflections</b>
 </pre>
+<p>
+    We used Trello to track our tasks:
+</p>
+<img src="assets/catsandfrogs/trello.png" alt="Trello" style="width: 1000px; border-radius: 8px; margin: 20px 0;">
                 
 <h3 class="responsibilities">- Grid System -</h3>
 <br>
@@ -151,7 +155,7 @@ public static void OccupyPosition(Vector2 position, GameObject obj)
 }   
 </code></pre>
 <br>
-<img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Controller Demo 1.4.1" style="width: 300px; border-radius: 8px; margin: 20px 0;">
+<img src="assets/catsandfrogs/ezgif-1218f622bb1657.gif" alt="Tap Demo" style="width: 300px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.1</span>
 <br>
 <pre>
@@ -299,8 +303,10 @@ void LateUpdate()
 }
 </code></pre>
 <br>
-<img src="assets/catsandfrogs/inspectorShop.png" alt="Inspector 1.4.2" style="width: 600px; border-radius: 8px; margin: 20px 0;">
+<img src="assets/catsandfrogs/catandfrog-ezgif.com-video-to-gif-converter.gif" alt="Drag and Drop" style="width: 300px; border-radius: 8px; margin: 20px 0;">
 <span class="RefNum">1.4.2</span>
+<img src="assets/catsandfrogs/inspectorShop.png" alt="Inspector" style="width: 600px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.3</span>
 <br>
 <p>When developing this, I encountered bugs such as the preview not tracking to the touch position correctly, and the wrong Cat types being shown.
     <br>I fixed these by moving the tracking code into <span>LateUpdate()</span>, which fixed the tracking, and I implemented the checking of <span>instanceID</span> to ensure that the dragging is being performed by the correct DragManager.cs
@@ -346,10 +352,10 @@ public class CatSO : ScriptableObject
 }
 </code></pre>
 <br>
-<p>This allows a developer or artist to easily modify the data for each Cat type. The values are editable in the inspector, and intuitive to modify. <span>[1.4.3]</span>
+<p>This allows a developer or artist to easily modify the data for each Cat type. The values are editable in the inspector, and intuitive to modify. <span>[1.4.4]</span>
 </p>
-<img src="assets/catsandfrogs/CatSOInspector.png" alt="Inspector 1.4.2" style="width: 600px; border-radius: 8px; margin: 20px 0;">
-<span class="RefNum">1.4.3</span>
+<img src="assets/catsandfrogs/CatSOInspector.png" alt="Inspector" style="width: 600px; border-radius: 8px; margin: 20px 0;">
+<span class="RefNum">1.4.4</span>
 <br>
 <p>When instantiated, the entities take the data from the <span>Scriptable Objects</span> through a setup method. The desired SO is piped in, and the data is taken.</p>
 <br>

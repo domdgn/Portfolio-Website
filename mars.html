@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3D World Practice</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="icon" href="images/favicon.ico">
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 62 57" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <rect width="10" height="57" fill="#f87338"/>
+                        <path d="M13,52h20c12.5,0,24-10.25,24-23.5S46.5,5,33,5H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                        <path d="M13,39h18.64c6.88,0,12.46-4,12.46-10.63s-5.58-10.37-12.46-10.37H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="about.html">About</a>
+                <a href="assets/CV - Dominic Duggan.pdf">CV</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 80px auto; padding: 20px;">
+        <article class="project-article">
+            <br>
+            <h1>Individual Game/3D World Practice</h1>
+
+            <section>
+                <h2 class="overview">Overview</h2>
+                <p><strong>Realistic 3D interior modelled in Blender and imported into Unity for use as a game environment</strong></p>
+                <p><span>Date Started:</span> April 2025</p>
+                <p><span>My Role:</span> Designer, 3D Artist</p>
+                <p><span>Software Used:</span> Unity, Blender, Substance Painter</p>
+                <br>
+                <div class="iframe-container" style="position: relative; width: 960px; height: 700px;">
+                    <!-- Background image that shows during loading -->
+                    <div class="loading-background" style="
+                      position: absolute;
+                      top: -20px;
+                      left: 0;
+                      width: 100%;
+                      height: 100%;
+                      background-image: url('assets/diorama/aanhetladen.jpg');
+                      background-size: cover;
+                      background-position: center;
+                      z-index: -1;
+                      border-radius: 8px; 
+                      margin: 20px 0;
+                      box-shadow: 0 10px 50px #010d13;
+                    "></div>
+                    
+                    <!-- Iframe that will appear on top once loaded -->
+                    <iframe 
+                      style="position: relative; z-index: 2;"
+                      frameborder="0" 
+                      src="https://itch.io/embed-upload/12160319?color=010d13" 
+                      allowfullscreen="" 
+                      width="960" 
+                      height="700">
+                      <a href="https://domdgn.itch.io/3d-diorama-practice">Play</a>
+                    </iframe>
+                  </div>            <section>
+                    <br><br><br>
+                <h2>1.1 | Introduction & Goal</h2>
+                <p>This is my second individual project that I worked on during my enrolment at the <span>University of Winchester</span>. The brief for the project involved creating an original environment or diorama, in any 3d modelling software, that can be used in Unity to display the ability to design and create a game environment.
+                <br><br>I began by creating new Blender and Unity projects, installing the <span>Universal Render Pipeline</span> (URP) in Unity. I then used URP to ensure that I could create interesting shaders and materials that achieved the desired artstyle.
+                </p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.2 | Concept and Inspiration</h2>
+                <p>While the brief was being delivered, many ideas came into my head, some of which I had been wanting to create for a long time. I decided to draw inspiration from many artists such as <a href="https://www.aendom.com/">Alex Treviño</a>, <a href="https://www.instagram.com/ianhubertz/">Ian Hubert</a>, <a href="https://polygonrunway.com/">Polygon Runway</a> and <a href="https://www.instagram.com/gcgameart/">Grace Collett</a>.</p>
+                <br>
+                <p>My methodology involved gathering reference images of artwork I liked and deciding on an artstyle for my project. I listed what I liked about each artstyle, and why I think they would suit my project. At the same time as this, I was writing down ideas for the scene that I thought of during my research for inspiration and style, so I didn't forget them and so I could weigh the pros and cons of each scene.</p>
+                <br>
+                <p>My scene ideas and inspiration images were gathered together using <span>Miro</span>.</p>
+
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<h2>Scene Ideas</h3>
+<b>city centre, tall buildings, circular park, homely, swingset</b>
+    + calming, simpler blocking out 
+    + showcases building design
+    - large scale, perhaps too much detail to manage for a short project
+
+<b>isolated field, pond, fishing, small wooden shack, character appears small in view</b>
+    + focus on environment rather than character design
+    + interesting to me 
+    + particle system for grass, trees
+    + can be developed in both high and low fidelity artstyles
+    + environmental storytelling
+    
+<b>isometric big city, heavily stylised cars driving</b>
+    + satisfying render
+    + keyframed or procedural car movement
+    + explorable from ground-view in Unity
+    - difficult to model detailed buildings & cars
+    - doesn't show a large variety of materials and structures
+    - not many organic elements
+
+<b>dark, ian-hubert-esque but low-poly alleyway, dystopian neon lighting, character's stall selling something</b>
+    + interesting to me
+    - high-fidelity, difficult to manage in a short time-frame
+    - big scope
+
+</pre>
+
+                <img src="assets/diorama/artstyle_inspiration.jpg" alt="Artstyle Research" style="width: 750px; border-radius: 8px; margin: 20px 0;">
+                <br><br>
+                <p>After spending some time on this, I decided that my scene would be created using an artstyle that is a mixture of what is shown in the clay-styled references, and the low-poly reference: a low-fidelity, toon-like stylised diorama, with low-poly assets, but with a clay feel.</p>
+                <br>
+                <p>I then developed my ideas into my <strong>final concept</strong>: an isolated farmer's cottage with a pier leading into the middle of a pond. The farmer is sat alone with their legs hanging off of the pier, while fishing.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.3 | Tools and Software</h2>
+                
+                <h3>Blender</h3>
+                <p>I chose to use Blender as my primary 3D modelling and shading workspace, as I have a lot of experience working in the Blender workspace, since the release of Blender v2.8, and I feel comfortable using the modelling and shading tools provided. Coming into this project, I knew there would have been a lot of techniques used that I have never learned before, so I was eager to improve and expand my skillset along the way, and learn many techniques that are transferrable to other 3D modelling programs.</p>
+                
+                <h3>Unity</h3>
+                <p>A requirement for the brief was that the resulting environment was imported into Unity, and explorable by a player character. Therefore, I chose to use Unity 2022.3.47f1, as that was the most recent LTS package at the time of starting the project. I was familiar with the program before this project, however I expected to run into a lot of challenges and roadblocks along the way, learning how to navigate them and result in an expanded skillset, suitable for game development.</p>
+                
+                <h3>Miro</h3>
+                <p>Miro is an online interactive whiteboard/note-taking app, used widely in industry and I chose to use it for the first time with this project, to gather my ideas and inspiration in a manageable and shareable format, ideal for showing how and why I developed my ideas.</p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.4 | Modeling Process</h2>
+                
+                <h3>Step 1: Initial Concept and Sketches</h3>
+                <p>To begin sketching and expanding on my concept, I first researched real-world examples of buildings and piers in a similar setting and style to what I desired and envisioned.</p>
+                <div class="image-group">
+                    <figure>
+                        <img src="https://coolstays.imgix.net/197179.jpg" alt="Reference 1">
+                        <span class="RefNum"><a href="#references">1.4.1</a></span>
+                    </figure>
+                    <figure>
+                        <img src="https://files.holidaycottages.co.uk/docs/lakelandcottagecompany/images/guides/drivers/WL-UW-Guides_Driver.jpg?width=800" alt="Reference 2">
+                        <span class="RefNum"><a href="#references">1.4.2</a></span>
+                    </figure>
+                    <figure>
+                        <img src="https://live.staticflickr.com/8004/28992106205_df4efec718_b.jpg" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.4.3</a></span>
+                    </figure>
+                    <figure>
+                        <img src="https://www.timberhomeliving.com/wp-content/uploads/2011/03/1-timber-frame-home-ext-028.jpg" alt="Reference 4">
+                        <span class="RefNum"><a href="#references">1.4.4</a></span>
+                    </figure>
+                </div>
+
+                <p>I then used the references to quickly sketch a base layout for my scene, by using the grease pencil in Blender, and sketching a very simple layout in the camera viewport. I spent a short amount of time on this sketch, I refined it until I was happy with the composition, and then quickly moved onto blocking out - as I find blocking out to be a much better way at developing and prototyping my ideas in a 3D space.</p>
+
+                <img src="assets/diorama/greasepencil_sketch.jpg" alt="Grease Pencil Sketch" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <h3>Step 2: Blocking Out the Environment</h3>
+                <p>After I was happy with the overall composition, I quickly started blocking out the scene. My favourite way to create ideas is to rapidly ideate, sketch, block out, and iterate. This methodology helps me create my best possible ideas, and follows conventions in Design Thinking practice.</p>
+
+                <p>To block out the scene, I kept my sketch and my references open in a Miro whiteboard on my second monitor, and placed primitives in the viewport to establish the relative size, location, and form of the main objects in the scene. I didn't adhere strictly to the sketch, as I wanted to ensure the piece could successfully evoke a feeling of isolation while also giving the feeling of looking <em>into</em> a small piece of another world, all in an aesthetically pleasing form.</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>Primitives</strong></p>
+                    <p>Basic 3D geometric shapes that can be used as building blocks to create more complex shapes, for example: cubes, spheres, cylinders and planes.</p>
+                </div>
+
+                <p>I added basic shaders to my block out, to better represent the world I was creating.</p>
+
+                <img src="assets/diorama/fishing_Blockout1.jpg" alt="Block Out 1" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <p>After my first blocking out of the scene, I decided to make some key changes that would influence the overall direction of the project.</p>
+<br>
+                <ul>
+                    <li><span>Cut out a smaller square from the scene</span><br>The environment was to be explored in a 3D world, so Having the edges off into the distance with a fixed cut-off would break all sense of it being a section from a lived-in world. My first block out was designed to fit a fixed camera angle, but I reworked it to better fit the brief and expectations of the project.</li>
+                    <br>
+                    <li><span>Moved the primary camera angle</span><br>The scene draws inspiration from isometric dioramas, so I moved the camera to outside of the scene, looking down. This helped to better establish the feeling of 'looking into' a world.</li>
+                    <br>
+                    <li><span>Built an organic timber frame model for the house</span><br>I built a timber frame for the house, as my concept involved an old stone cottage with a timber frame, so I quickly threw together what I imagined the base layout of the house to be.</li>
+                </ul>
+<br>
+                <div class="image-group-new">
+                    <img src="assets/diorama/26.09.png" alt="Block Out Progress" style="border-radius: 8px; margin: 20px;">
+                    <img src="assets/diorama/26.09 clay.jpg" alt="Clay Render" style="border-radius: 8px; margin: 20px;">
+                </div>
+
+                <h3>Step 3: Detailed Modeling</h3>
+                <p>My first stage to beginning the detailed modelling stage was to review the previous block outs, and add notes as to what I would like to see improved and added, to establish a set list of goals and ensure that I could fit everything into the time I had to spend on this project.</p>
+
+                <img src="assets/diorama/26.09 Notes.jpg" alt="Development Notes" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+
+                <p>I began by making a new <span>.blend file</span>, and modelling the ground from scratch. I began with a plane which I subdivided, and edited in the Z-axis with proportional editing, to create a smooth, organic hill shape, with a deep area for the water to sit. To create the flat sides, I extruded the outer corners down in the Z-axis, made them level with each other with the keystrokes</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>S, Z, 0</strong><br>Scale, Z - axis, 0</p>
+                </div>
+
+                <p>Then, I used the <b>F</b> key to join them together in to a flat base. Finally, I held the <b>Alt</b> key, and selected the loop around each side, and pressed <b>F</b> again, to fill in each of the four side faces of the ground mesh. This left me with n-gons for the sides, however the mesh is intended to be entirely static, and not deformed, additionally, the wall is completely flat. Therefore, I expected there to be no issue with leaving them as n-gons.</p>
+
+                <div style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <p><strong>N-Gons</strong><br>Polygons with more than four vertices and edges. They are avoided in most cases, as they can cause issues when rendering or deforming a mesh.</p>
+                </div>
+                <br>
+                <h3 class="responsibilities">- House -</h3>
+                <img src="assets/diorama/modelling/house.jpg" alt="House Clay" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <p>The base mesh for the house is very simple, I started with a cube, scaled it to an approximate size, then created an edge loop, selected the middle edge on the top face, and moved it upwards in the Z-axis to create the roof & gable.
+                    <br><br>Then, I used the Knife tool to cut an edge into one of the side faces, and extruded out the attachment. To clean up on useless edges, I dissolved the unnecessary edges.
+                    <br><br>The circular window was created using the <span>Loop Tools</span> addon, by creating a point in the center of where I wanted the window, then bevelling the vertex, and using the Loop Tool's 'Circle' tool.
+                    Then, I extruded it inwards.
+
+                    <br><br>The corner bricks and details are separate children of the main body of the house. 
+                    <br><br> I created two bricks from a bevelled cube, then used a series of <span>array</span> and <span>mirror</span> modifiers to place them on the corners of the house. Manual adjustment was necessary afterwards, however using modifiers saved time. <br><br>
+                    To make a more organic feel, I used <span>randomise transform</span> to give each brick a unique offset/rotation. This makes everything feel more natural and organic.
+                </p> <br>
+                <h3 class="responsibilities">- Tiles -</h3>
+                <img src="assets/diorama/modelling/tiles.jpg" alt="Tiles" style="width: 400px; border-radius: 8px; margin: 20px 0;">
+                <p>The tiles were modelled in a similar manner to the corner bricks of the house - with a series of array modifiers to create a staggered tile pattern.
+                    <br><br>Difficulty came with preventing clipping of tiles through the roof window, and also with the smaller tiles on the edges. Therefore, I had to apply the modifiers and manually remove and add tiles where needed.
+                    <br><br>This is not the ideal method to making this. In the future, if I was to do this again, I would research ways to do this using better methods such as <span>geometry nodes</span> instead. This would allow for more precise control over tile placement and easier adjustments around windows and edges, while maintaining a non-destructive workflow that's easier to modify later. The node-based approach would also make it simpler to adjust tile spacing, rotation, and overlap dynamically.
+                </p> <br>
+                <h3 class="responsibilities">- Props -</h3>
+                <div class="container">
+                    <div class="sketchfab-embed-wrapper">
+                        <iframe title="Trowel" 
+                            frameborder="0" 
+                            allowfullscreen 
+                            mozallowfullscreen="true" 
+                            webkitallowfullscreen="true" 
+                            allow="autoplay; fullscreen; xr-spatial-tracking" 
+                            xr-spatial-tracking 
+                            execution-while-out-of-viewport 
+                            execution-while-not-rendered 
+                            web-share
+                            src="https://sketchfab.com/models/b0b409576160427387f496d1d71d9332/embed?autostart=1&transparent=1&ui_theme=dark">
+                        </iframe>
+                    </div>
+                    <div class="sketchfab-embed-wrapper">
+                        <iframe title="Wellie" 
+                            frameborder="0" 
+                            allowfullscreen 
+                            mozallowfullscreen="true" 
+                            webkitallowfullscreen="true" 
+                            allow="autoplay; fullscreen; xr-spatial-tracking" 
+                            xr-spatial-tracking 
+                            execution-while-out-of-viewport 
+                            execution-while-not-rendered 
+                            web-share
+                            src="https://sketchfab.com/models/dc8853fd949648fd9fd8c40fab8b2e55/embed?autospin=1&autostart=1&camera=0&transparent=1&ui_theme=dark">
+                        </iframe>
+                    </div>
+                </div>
+                <p>I decided that the environment needed small props to make it feel more 'lively' and natural. To fit the setting I created props that could be fit for a gardener/landowner. <br><br>
+                    For the wellies, I handmade the overall shape using lots of reference images from different angles. Then, used the <span>Quad Remesher 1.3</span> addon to quickly and efficiently retopologise the mesh. I used this
+                    mainly to save time, however it still has issues, in the future, it would be better to retopologise by hand. <br><br> The trowel was made in a similar manner, however without the use of <span>Quad Remesher</span>.
+                </p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/diorama/modelling/wellies/ref_side.png" alt="Reference 1">
+                        <span class="RefNum"><a href="#references">1.4.5</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/wellies/Sievi_Boots_(2).jpg" alt="Reference 2">
+                        <span class="RefNum"><a href="#references">1.4.6</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/wellies/MESH.png" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.4.7</a></span>
+                    </figure>
+                </div>
+            </section>
+<br><br>
+            <section>
+                <h2>1.5 | Shading, Texturing and UV Mapping</h2>
+
+                <h3 class="responsibilities">- Shading -</h3>
+                <br>
+                <p>In <span>Blender</span>, all of the materials used are procedural. They were all created by myself, using the <span>Node Wrangler</span> addon. For example, the colours for the tiles are determined randomly per each tile using an Object Info node, and the water shader uses many nodes.</p>
+
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/diorama/modelling/nodesTiles.jpg" alt="Tiles Nodes">
+                        <span class="RefNum"><a href="#references">Tiles</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/nodesWater.jpg" alt="Water Nodes">
+                        <span class="RefNum"><a href="#references">Water</a></span>
+                    </figure>
+                </div>
+
+                <p>These shaders allowed me to quickly create a detailed render with nice-looking materials, for example the water.</p>
+
+                <img src="assets/diorama/final_placeholder.jpg" alt="Render" style="width: 40%;">
+                <br>
+                <p>However, these shaders cannot easily be imported to Unity. Thus, I had to do a mixture of <span>texture baking</span> and remaking the shaders in Unity.
+                    I wasn't fully happy with my water shader, I felt like it didn't fit the style I was going for, so I decided to take inspiration and modify an already existing, more toon-like water shader.
+                    <br><br>This shader uses Unity's <span>URP</span> shader graph system, and is available <a href="https://www.youtube.com/watch?v=MHdDUqJHJxM">here</a>.
+                    <br><br>I modified it to suit my scene, and adjusted using the shader's parameters to achieve the look in <span>[1.5.1]</span>.
+                </p> <br>
+                <img src="assets/diorama/1208 (1).gif" alt="Water" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+                <span class="RefNum"><a href="#references">1.5.1</a></span>
+                <p>
+                    <br><br>For other shaders that I were happy with, I had to bake both albedo colour maps, and normal maps.
+                    <br><br>For example, the wooden deck <span>[1.5.6]</span> uses a procedural texture that needed baking to be used in Unity. First attempts at creating the decking used baking the normals of a high-fidelity model into a much lower-poly model <span>[1.5.2], [1.5.3], [1.5.4]</span>, however I decided that this didn't fit my artstyle, so I decided to go for a much simpler approach.
+                </p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/diorama/modelling/sculpting/SpeedSculpt_FirstPass.gif" alt="Sculpting">
+                        <span class="RefNum"><a href="#references">1.5.2</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/sculpting/BakedNormalsWood.png" alt="Old Deck Baked">
+                        <span class="RefNum"><a href="#references">1.5.3</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/sculpting/UVs.png" alt="Old Deck UVs">
+                        <span class="RefNum"><a href="#references">1.5.4</a></span>
+                    </figure>
+                </div>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/diorama/modelling/bake.jpg" alt="Baking">
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/DeckAlbedo.png" alt="Deck Albedo">
+                        <span class="RefNum"><a href="#references">1.5.5</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/diorama/modelling/barrels.jpg" alt="Deck">
+                        <span class="RefNum"><a href="#references">1.5.6</a></span>
+                    </figure>
+                </div>
+            </section>  <br>
+            <p>I repeated the process of baking maps for many other objects including the ground, house, tiles, etc. Then I imported them into Unity by extracting materials from the .blend file, then modifying them to use the appropriate maps in Unity.</p>
+<br>
+            <section>
+                <h2>1.6 | Lighting, Rendering & Unity</h2>
+                <p>I decided to go for a very simple approach to lighting for this project. This was because I was inexperienced with lighting a 3D scene professionally, and I didn't want to increase the workload and time spent on this project too much. <br><br>
+                If I was to do a project like this again, I would instead manually light the scene, as this can bring a much more unique and lively atmosphere to what is currently a somewhat generic scene.
+                This would require research into lighting methodology.
+                <br><br>
+                To light my scene, I used a <span>HDRI</span> (High Dynamic Range Image) environment map to create ambient lighting and reflections. This helped achieve natural-looking shadows and highlights across all materials, particularly enhancing the metallic and reflective in the scene.
+                <br><br>
+                The HDRI used was from <a href="https://polyhaven.com/a/near_the_river_01">PolyHaven</a>. It was very easy to implement into both Unity and Blender, which immediately gave the scene natural lighting. I played with orientation and saturation to get the desired result.
+                <br><br>
+                Additionally, I decided to, in Unity, take advantage of URP and create a <span>Global Volume [1.6.1]</span>. In this, I gave the camera post-processing effects, such as bloom, vignette, and depth of field bokeh.
+                <br><br>This helped bring the scene to life, and make the sense of scale feel accurate to how I envisioned it. Furthermore, I could then tweak the appearance in-camera to make the artstyle 'pop'.
+            </p>
+            <img src="assets/diorama/volume.jpg" alt="Volume" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+            <span class="RefNum"><a href="#references">1.6.1</a></span>
+            </section>
+            <br>
+            <p>To make the demo playable, I decided to use a pre-made character controller available on the <span>Unity AssetStore</span> from <a href="https://assetstore.unity.com/packages/tools/game-toolkits/third-person-controller-basic-locomotion-free-82048">Invector</a>
+            <br><br>I used this despite the fact that I could create my own because I didn't want to spend time developing and refining a character controller, as the aim of this project is to develop and display my 3D environment art skills. Therefore, I made the easy decision to use a pre-existing character controller.
+            <br><br>I chose <span>Invector</span> instead of Unity's own template character controller because it seemed to be more up-to-date, and have much more fine-control over how players move, even in the free version of the asset. 
+            </p>
+<br>
+            <section>
+                <h2>Limitations</h2>
+                <p>In my opinion, the biggest limitations to my scene are a lack of detail, generic proportions, and generic lighting. While these are not limitations in and of themselves, I believe that they prevented me from achieving
+                    the art-direction that I had planned and envisioned. <br><br>
+                    Adding some props to the scene did help with this, however to improve this further, I think that spending more time on finer details would help towards my goal. I think that spending a handful of weeks on prop-modelling alone could really help make the scene feel alive and cohesive.
+                    <br><br>
+                    Furthermore, everything in the scene has rather realistic proportions. This was my goal from the beginning, however I feel like the scene could be improved by redesigning it with more cartoon-ish proportions. This, in conjunction with a more unique approach to lighting, could really make the scene
+                    stand out, and feel more like it is a segment from a full world rather than a small-scale interpretation of reality.
+                    <br><br>
+                    Additionally, the use of a pre-made character controller meant that I didn't have full control over the player's movement, as for example it would've been difficult to implement other methods of traversal such as climbing. For this project, I would've loved to have been
+                    able to implement a small swimming state for when the player is in the water, as right now, the player can walk full-speed, with the full effect of gravity, straight through the water. However, this does not affect my ability to display my skills.
+                    <br><br>
+                    Lastly, I feel like some elements of the scene aren't fully cohesive in style. For example, the large tree feels very out-of-place. If I was to improve upon this, I would give it a much more unique shape, and most importantly, a material that doesn't clash with the rest of the scene.
+                </p>
+            </section>
+<br>
+            <section>
+                <h2>Further Research</h2>
+                <p>To further improve on this, or for similar projects in the future, I should research into advanced lighting techniques, stylized art direction, procedural asset generation using geometry nodes, character controller implementation, and environment design principles. Specifically, studying professional lighting setups would help create more atmospheric and unique scenes, while deepening my knowledge of stylized art would help develop a more cohesive and distinctive visual style. Learning geometry nodes would improve my workflow for creating repeating elements like tiles and bricks, and understanding character controller development would allow for better integration of custom gameplay features like swimming. Additionally, researching environment design principles would help create more intentional design choices that lead to a better compositional balance.</p>
+            </section>
+<br>
+            <section>
+                <h2>Final Thoughts</h2>
+                <p>This project has served as a great learning experience in environment design and 3D modeling. While working on it, I've improved my skills with industry-standard tools such as Blender and Unity, learned the importance of proper planning and reference gathering, and developed a better understanding of the entire pipeline from concept to playable environment. Though there are areas for improvement, particularly in lighting and stylistic coherence, the project has successfully achieved its core goals of creating an explorable mini 3D diorama. The challenges I faced have provided direction for my future learning and development as a 3D artist.</p>
+            </section>
+<br>
+<section class="references" id="references">
+    <h3>References</h3>
+    <br>
+    <p>[1.4.1] The Cabin on the Lake (2022). [Photo]. Coolstays. Retrieved from <a href="https://www.coolstays.com/blog/round-ups/book-now-for-2023/25448">https://www.coolstays.com/blog/round-ups/book-now-for-2023/25448</a></p>
+    <br>
+    <p>[1.4.2] A Guide To Ullswater (2020). [Photo]. The Lakeland Cottage Company. Retrieved from <a href="https://www.lakeland-cottage-company.co.uk/guides/ullswater">https://www.lakeland-cottage-company.co.uk/guides/ullswater</a></p>
+    <br>
+    <p>[1.4.3] Old stone cottage, Castleton, Peak District (2016). [Photo]. Baz Richardson. Retrieved from <a href="https://www.flickr.com/photos/bazrichardson/28992106205">https://www.flickr.com/photos/bazrichardson/28992106205</a></p>
+    <br>
+    <p>[1.4.4] Timer Frame Home - Rustic Renewal 1 (n.d.). [Photo]. Timber Home Living. Retrieved from <a href="https://www.timberhomeliving.com/articles/building-the-reclaimed-timber-home-rustic-renewal/">https://www.timberhomeliving.com/articles/building-the-reclaimed-timber-home-rustic-renewal/</a></p>
+    <br>
+    <p>[1.4.5] Hunter Boots Womens Green Tall Matt Wellies (n.d.). [Photo]. Hunter | Curvissa. Retrieved from <a href="https://www.curvissa.co.uk/products/hunter-boots-womens-green-tall-matt-wellies/_/A-74C301_4">https://www.curvissa.co.uk/products/hunter-boots-womens-green-tall-matt-wellies/_/A-74C301_4</a></p>
+    <br>
+    <p>[1.4.6] Modern polyurethane Wellington boots (2017). [Photo]. Abc10. Retrieved from <a href="https://en.wikipedia.org/wiki/Wellington_boot#/media/File:Sievi_Boots_(2).jpg">https://en.wikipedia.org/wiki/Wellington_boot#/media/File:Sievi_Boots_(2).jpg</a></p>
+    <br>
+    <p>Quad Remesher 1.3. Retrieved from <a href="https://exoside.com/">https://exoside.com/</a></p>
+    <br>
+    <p>Water Shader. Retrieved from <a href="https://www.youtube.com/watch?v=MHdDUqJHJxM">https://www.youtube.com/watch?v=MHdDUqJHJxM</a></p>
+    <br>
+</section>
+        </article>
+    </main>
+</body>
+</html>

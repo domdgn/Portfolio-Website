@@ -132,7 +132,7 @@
                 </div>
                 <br>
                 <p>The project lead created a Gantt chart to organise what we would be doing for the duration of the project.</p>
-                <img src="assets/timeheist/image.png" style="width: 500px;">
+                <img src="assets/timeheist/image.png" style="width: 750px;">
             </section>
 <br><br>
             <section>
@@ -147,7 +147,7 @@
 <br><br><br>
             <h1>Section 2 | Programming</h1>
             <section>
-                <h2>1.4 Room Generation</h2>
+                <h2>2.1 Room Generation</h2>
                 <img src="assets/timeheist/key.png" style="width: 750px;">
                 <p>Before I began programming, I setup a new Unity project, installed all the necessary packages and created a <span>GitHub</span> repository to use as my version control software.
                 This Unity project was <b>completely separate</b> to the main <span>Time Heist</span> project, as I wanted the generator to be available separately on its own (V1 available on my GitHub).
@@ -170,7 +170,7 @@
         </iframe>
     </div>
     <br>
-    <span class="RefNum"><a href="#references">1.4.1</a></span>
+    <span class="RefNum"><a href="#references">2.1.1</a></span>
     <br>
     <p>
         Due to information from both this video and others, I decided that I want my generator to <span>randomly</span> place room prefabs connected to manually defined 'EntryPoints' in a convincingly seamless manner. 
@@ -281,40 +281,216 @@ if (IsRoomOverlapping(roomToSpawn))
     This detects if a room is upside down by checking if the room's <span>Local Up Vector</span> is aligned with the <span>Global Down Vector</span> by using a <span>Dot Product</span> threshold, and if so, it flips the room by rotating it 180 degrees on the local Z-axis. <br><br> I also encountered an issue where rooms would overlap (this can be seen in the demo gif above, as it is from an older version.) <br><br>
     I fixed this by implementing a collision detection system in the <span>IsRoomOverlapping</span>(GameObject room) method. <br><br> This uses Unity's <span>Physics.OverlapBox</span> function to check whether the newly spawned room's bounds (scaled slightly smaller to prevent false-positives) intersect with any trigger colliders on the <span>Room Layer</span>, and if so it is destroyed and re-attempted.
 </p>
-
-<br><br><br><br><br><br><br>
+</section>
+<br><br>
 <section>
-    <h2>1.5 Reflection</h2>
-    <p>Development of Cats and Frogs ran mostly smoothly. I kept pace with the schedule that I had planned for myself, and achieved the majority of my goals to a reasonable standard. When it came time to present our game, my tutor referred to it as a "medium-fidelity final product"
+<h2>2.2 Game Logic</h2>
+<p>I had the responsibility of programming the game logic. This is mostly controlled in <span>GameManager.cs</span>, with key parts such as handling of currency and UI to their respective managers.
+<br><br>
+The <span>GameManager</span> handles the game's lifecycle, coordinating dungeon generation, game start/end conditions, player presence at the start zone, and timing logic. It connects to other components like <span>DungeonGenerator</span>, <span>StartTrigger</span>, and <span>Timer</span> to manage state transitions smoothly. The game begins only once the <span>dungeon is fully generated</span> and ends either when the <span>timer runs out</span> or the <span>player leaves the start zone</span>.
+<br><br>
+The <span>StartGameCoroutine</span> method showcases how the GameManager waits for dungeon generation to complete before activating the game, demonstrating smooth asynchronous control flow and clear separation between setup and gameplay logic.
+</p>
+<pre>
+<code class="language-csharp">public IEnumerator StartGameCoroutine()
+{
+    while (isDungeonGenerating)
+    {
+        yield return null;
+    }
+
+    isGameActive = true;
+
+    if (timer != null)
+    {
+        timer.StartTimer();
+    }
+
+    onGameBegin.Invoke();
+    Debug.Log("Game started!");
+}
+</code>
+</pre>
+<p>
+My code uses a lot of <span>UnityEvents</span>, meaning that it is highly modular and event-driven, allowing different systems to communicate efficiently without tight coupling. This approach improves flexibility, makes the code easier to maintain, and enables seamless integration of new features by simply subscribing to or invoking these events.
+</p><br>
+<pre>
+<code class="language-csharp">public IEnumerator EndGameCoroutine()
+{
+    if (isGameActive)
+    {
+        isGameActive = false;
+        onGameOver.Invoke();
+
+        Debug.Log("Game over!");
+
+        if (generator != null && playerAtStart)
+        {
+            timer.ResetTimer();
+            generator.ResetDungeon();
+
+            while (isDungeonGenerating)
+            {
+                yield return null;
+            }
+        }
+
+        else if (!playerAtStart)
+        {
+            SceneManager.LoadScene("FailMenu");
+        }
+    }
+}
+</code>
+</pre> <br>
+<h3 class="responsibilities">- Timer -</h3>
+<br>
+<img src="assets/timeheist/oldtimer.jpg" style="width: 1000px; border-radius: 8px;">
+<p>
+    The timer is a key part of the game, and is handled by its own script (<span>Timer.cs</span>). 
+    <br><br>
+    The <span>Timer</span> class manages a countdown timer for the game, updating a UI text element to display remaining time and changing its colour based on warning and critical thresholds. It integrates with the <span>GameManager</span> via <span>UnityEvents</span>, starting and stopping automatically when the game begins or ends, while also supporting pause, resume, and reset functionality for flexible control over timing during gameplay. 
+</p>
+<br><br>
+<h3 class="responsibilities">- UIManager -</h3>
+<br>
+<p>
+    The <span>UIManager</span> script is responsible for updating and managing the game's user interface elements. <br><br>
+    It dynamically updates the displayed money and item count by querying the <span>MoneyManager</span> singleton, reflecting the player’s current in-game earnings and collected items. <br><br>
+    Additionally, it handles scene transitions such as starting the game, returning to the menu, showing the win screen, and quitting the application.
+</p>
+<br><br>
+<h3 class="responsibilities">- MoneyManager -</h3>
+<br>
+<pre>
+<code class="language-csharp">private readonly HashSet&lt;GameObject&gt; collectedItems = new HashSet&lt;GameObject&gt;();
+
+private void AddTreasureToList(GameObject item)
+{
+    if (item != null && collectedItems.Add(item)) 
+    {
+        Debug.Log($"[MoneyManager] Treasure added: {item.name}");
+        UpdateValueRecovered();
+        UpdateUI();
+    }
+}
+</code>
+</pre>
+<p>
+    The <span>MoneyManager</span> is a singleton responsible for tracking all treasure items collected by the player throughout the game. <br><br>
+    It maintains a unique collection of treasures using a <code>HashSet</code> to avoid duplicates, updating the total value recovered by summing the values from each collected item’s <span>ObjectInformation</span> component. <br><br>
+    The class also communicates changes to the UI by notifying the <span>UIManager</span> to update displayed money and item counts, ensuring the player’s progress is accurately reflected in real-time.
+</p>
+</section>
+<br><br>
+<section>
+<h2>2.3 Item Spawning</h2>
+<img src="assets/timeheist/itemspawn.png" style="width: 750px; border-radius: 8px;">
+<br>
+<pre>
+<code class="language-csharp">private void SpawnItemAtPoint(Transform spawnPoint)
+{
+    if (Random.Range(0, 3) != 0)
+        return;
+
+    GameObject itemToSpawn = items[Random.Range(0, items.Count)];
+
+    Vector3 spawnPos = spawnPoint.position + spawnOffset;
+    GameObject spawnedItem = Instantiate(itemToSpawn, spawnPos, spawnPoint.rotation);
+
+    Collider itemCollider = spawnedItem.GetComponent<Collider>();
+    if (itemCollider != null)
+    {
+        float bottomOffset = itemCollider.bounds.min.y - spawnedItem.transform.position.y;
+        Vector3 adjustedPosition = spawnPos;
+        adjustedPosition.y -= bottomOffset;
+        adjustedPosition += colliderBottomOffset;
+        spawnedItem.transform.position = adjustedPosition;
+    }
+
+    if (spawnedItemsParent != null)
+        spawnedItem.transform.SetParent(spawnedItemsParent);
+
+    spawnedItems.Add(spawnedItem);
+}
+</code>
+</pre>
+<p>
+    The <span>ItemSpawner</span> class manages the procedural placement of collectible items within the dungeon environment. <br><br>
+    It identifies designated spawn points tagged as <span>ItemSpawn</span> within each generated room and attempts to spawn items at these locations with a random chance, ensuring variety and unpredictability in item placement. <br><br>
+    To achieve precise positioning, the spawner calculates the vertical offset based on the item’s collider bounds, adjusting the spawn height so items rest correctly on the floor or surface, with <span>colliderBottomOffset</span>. <br><br>
+    Spawned items are parented under a specified transform for organisation in the inspector, and the spawner maintains an internal list of all currently spawned items for easy management, including methods to add or remove items dynamically during gameplay. <br><br>
+    The spawning process is implemented as a coroutine, allowing it to run smoothly over multiple frames without freezing the game, which is critical for maintaining <span>performance</span> in mobile Virtual Reality.
+</p>
+</section>
+<br><br><br>
+<section>
+    <h1>Section 3 | Playtesting in VR</h1>
+    <br>
+    <p>Following the <span>Gantt Chart</span>, starting from week 4, we invited both team members and external participants to <span>playtest</span> the game. This process was crucial to gather valuable user feedback, identify potential issues early, and refine the VR experience to ensure it was stable and presentation-ready for the <a href="https://www.linkedin.com/showcase/code-and-canvas-exhibition/">Code & Canvas Exhibition</a>.</p>
+    <img src="assets/timeheist/playtest.webp" style="width: 750px; border-radius: 8px;">
+    <p>Playtesting allowed us to fine-tune key settings such as <span>player speed</span> and <span>level size</span>. It also uncovered bugs, including <i>holsters not tracking accurately to real-world positions</i> and <i>object damage failing in specific areas</i>, all of which were addressed in preparation for the exhibition.<br><br>
+    The most significant issue revealed early on was <span>performance</span>. To tackle this, we lowered light-quality settings considerably and implemented a <span>culling</span> system that disables lights and renderers outside the player’s view, resulting in a dramatic performance boost.<br><br>
+    The exhibition provided access to many playtesters, especially first-time VR users. Their feedback highlighted persistent challenges, including difficulties with depth perception and unintuitive controls, which we thoroughly documented for future improvements.</p>
+</section>
+
+
+<br><br><br>
+<section>
+    <h1>Section 4 | Reflection</h1>
+    <p>
+        Developing <span>Time Heist</span> was an intensive and highly practical learning experience. It was our first serious attempt at creating a complete VR game, and we approached it with a clear focus: to build something playable, stable, and presentable within the project timeframe. From the earliest stages of planning through to exhibition day, our team made consistent progress. 
         <br><br>
-        This shows that we successfully developed a working tower-defense game for Android devices that performs well on real hardware and is a fully playable game. Whilst we achieved what the brief required of us, there are a lot of improvements that could've been made along the way.
+        The project culminated at the <a href="https://www.linkedin.com/showcase/code-and-canvas-exhibition/">Code & Canvas Exhibition</a>, where we had the opportunity to share the game with the public and industry professionals, and receive direct feedback from a wide variety of players — including those who had never used VR before. We were proud to receive the <strong>Team Choice (1st Years)</strong> award, which showed that our peers and others recognised the work and ambition behind the project. 
     </p>
     <br>
-    <h3>Limitations/Failures</h3>
+    <h3>Technical and Design Reflections</h3>
     <br>
-    <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
+    <p>
+        Designing for VR is not as intuitive as designing for flatscreen 3D. Early in development, we realised how much needed to be reconsidered: UI, player input, interaction techniques, and even basic navigation all behave differently in VR. Some of our initial ideas had to be scrapped or redesigned when we saw how unintuitive they felt in practice. In particular, there were frequent issues around object interaction — grabbing, dropping, and holstering — that required multiple attempts to feel somewhat intuitive.
         <br><br>
-        Being a solo developer entirely eliminates the problem of poor communication, which is a positive. However, it also led to a lot of poor code organisation, as well as rushing some key features. This is in part due to the high workload as the sole developer, but also
-        due to poor planning of systems and their interactions, due to lack of experience. This led to a lot of technical debt, meaning that it would be unecessarily difficult to expand on this game to completely polish and finish it, as some systems would ideally be completely rewritten and re-thought-out.
+        One of the most difficult aspects of the project was managing performance. VR demands stable, high frame rates, and the mobile headset we were targeting had very limited resources.
         <br><br>
-        The art team were not fully aware of exactly what sprites and images were needed at what time. This led to me having to create some prototype artwork for the UI - this led to a lack of focus and a lack of time - contributing to the somewhat rushed systems. This could have been prevented with better inter-team communication.
+        Beyond technical issues, playtesting revealed gaps in our UX. For many users, especially those unfamiliar with VR, depth perception was difficult — making it harder to judge distances and interact with objects precisely. These challenges made it clear how crucial accessibility and intuitiveness are in VR design, especially for onboarding new players.
+    </p>
+    <br>
+    <h3>Teamwork, Communication, and Scope</h3>
+    <br>
+    <p>
+        As a whole, the entire team worked great together, and it was by far the most enjoyable team experience yet. We communicated often and well - with a mix of in-person and online meetings, and, overall we understood exactly what was expected of us. There were of course some issues, however nothing disastrous.
         <br><br>
-        A personal failure of mine is that I spent too long working on the drag and drop system. Whilst it is vital to the game, so having a rigid drag and drop system is very important, I could have used an asset from the Unity Asset store instead, and spent more time working
-        on the bespoke systems, both refining them and creating more in-depth gameplay.
-        <br><br>
-        The prototype focused on core mechanics, lacking advanced features such as more varied enemy types/classes or power-ups. UI elements could benefit from enhanced visual feedback and animations.
-        <br><br>
-        The majority of the shortcomings of Cats and Frogs boil down to poor planning and poor time management, which is something I need to work on for future projects. It is entirely possible to fix these issues in Cats and Frogs, and allow for it to be expanded into a full-fledged game, by reworking the core systems from the ground up. Despite this, the project reached its goals in the allotted time.
-        <br><br>
-        Based on these limitations I think a further 6 weeks of focused development time left would be enough to make everything functional and scalable, as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
-        want the game to have significant polish.
-        <br><br>
-        Areas I need to research include UI and UX design for mobile games, as well as mobile performance optimisation and profiling. This would allow me to design intuitive and engaging interfaces specifically tailored for mobile platforms, and ensure that my games can run
-        smoothly on even low-end devices, and I can use that knowledge of memory management and efficient rendering techniques in all aspects of gamedev.
-        <br><br>
-        Further, I definitely need to research into system planning. Effective system planning ensures that a game's mechanics are not only cohesive and functional, but easier to build on top of and add new features. This would have helped in this project as I would have been able to add all the planned enemy types, such as long-ranged Wizard Frogs, and bosses with special attacks.
+        One of the more subtle lessons was around scope control. Our original ideas for <span>Time Heist</span> included puzzles, a proper tutorial, and additional gameplay systems such as time-based challenges. We had to cut or simplify many of these features to stay within the project timeline. In future projects, we’ll be more deliberate about breaking down features into modular, testable systems from the beginning.
+    </p>
+    <br>
+    <h3>Further Development</h3>
+    <br>
+    <p>
+        Despite some technical compromises, <span>Time Heist</span> reached a solid level of functionality and polish, particularly for our first VR project. It gave us a working foundation that we could feasibly expand upon, as well as a clear understanding of what it takes to build and deliver an interactive VR experience.
+    </p>
+    <br>
+    <p>
+        Given another 4 to 6 weeks, we could refine some of the systems that currently feel rigid or incomplete — such as improving the responsiveness of object interactions and creating a clearer onboarding process for new players. A couple more weeks on top of that would likely be necessary to bring the overall polish up to a more professional standard. This would include sound design, UI animation, environmental effects, and better visual or audio feedback for player actions.
+    </p>
+    <br>
+    <p>This project also highlighted several areas I’d like to explore further in future work:</p>
+    <br>
+    <ul>
+        <li>> UX and interaction design specifically for VR, especially with first-time users in mind</li>
+        <li>> Mobile performance profiling and memory management in Unity</li>
+        <li>> System architecture planning to reduce unnecessary complexity and improve modularity</li>
+    </ul>
+    <br>
+    <p>
+        These skills would directly benefit any future projects I take on, particularly those in VR or AR, where performance and user interaction are especially critical.
+    </p>
+    <br>
+    <p>
+        Overall, <span>Time Heist</span> has laid a strong foundation for me as a developer. It exceeded my expectations and demonstrated what our team is capable of. I'm proud of what we presented at the exhibition — especially winning the <strong>Team Choice (1st Years)</strong> award — and excited to build on this momentum in future projects.
     </p>
 </section>
+
+
+
 <br>
 <img src="assets/catsandfrogs/GameDemoFull.gif" alt="Final Demo" style="width: 500px; border-radius: 8px; margin: 20px 0;">
 <br>

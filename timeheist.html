@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Heist Y1S2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+    <link rel="stylesheet" href="styles/atom-one-dark.min.css">
+    <link rel="icon" href="images/favicon.ico">
+    <script src="script/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 62 57" xmlns="http://www.w3.org/2000/svg">
+                    <g>
+                        <rect width="10" height="57" fill="#f87338"/>
+                        <path d="M13,52h20c12.5,0,24-10.25,24-23.5S46.5,5,33,5H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                        <path d="M13,39h18.64c6.88,0,12.46-4,12.46-10.63s-5.58-10.37-12.46-10.37H13" fill="none" stroke="#f87338" stroke-miterlimit="10" stroke-width="10"/>
+                    </g>
+                </svg>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="about.html">About</a>
+                <a href="assets/CV - Dominic Duggan.pdf">CV</a>
+            </div>
+        </nav>
+    </header>
+
+    <main style="max-width: 1200px; margin: 80px auto; padding: 20px;">
+        <article class="project-article">
+            <br>
+            <h1>Time Heist - Group VR Game Project</h1>
+
+            <section>
+                <h2 class="overview">Overview</h2>
+                <p><strong>VR Interactive Game</strong></p>
+                <p><span>Date Started:</span> April 2025</p>
+                <p><span>My Role:</span> Developer</p>
+                <p><span>Software Used:</span> Unity, C#</p>
+                <img src="images/CatsandFrogsCover.jpg" alt="Project Overview" class="finalimg">
+                 <br>
+                <!-- <iframe style="box-shadow: 0 10px 50px #010d13; border-radius: 8px;" frameborder="0" src="https://itch.io/embed-upload/13561435?color=333333" allowfullscreen="" width="360" height="660"><a href="https://domdgn.itch.io/cats-and-frogs">Play Cats and Frogs on itch.io</a></iframe> -->
+                <h3><a href="https://github.com/domdgn/VR-Dungeon-Game/releases/download/exhibition-demo/TimeHeistExhibitionBuild.apk">Download APK (for Meta Quest)</a></h3>
+                <span><a href="https://github.com/domdgn/VR-Dungeon-Game/">GitHub</a></span>
+            </section>
+
+            <br><br>
+            <h1>Section 1 | Introduction</h1>
+            <section>
+                <h2>1.1 Brief</h2>
+                <p>This is a Group Game Project made in Year 1, Semester 2.
+                    <br><br>
+                    The goal is to develop a presentable, playable prototype of a game. The brief was as follows: 
+                    <br>
+                    <b style="color: rgb(101, 141, 9);">"Working in groups, create and develop a game that takes advantage of immersive and interactive technologies."</b>
+                    <br><br>
+                    My role in this project was as <span>Developer</span>.
+                    <br>
+                    I worked in a team of 3 Developers and 3 Artists/Designers. However we all concepted our project as a group.
+                </p>
+            </section>
+<br><br>
+            <section>
+                <h2>1.2 Concept and Inspiration</h2>
+                <p>As a class, we all pitched ideas for the projects, which were voted on, and the top votes were then developed by seperate groups. I had the idea of creating
+                    a game that is similar to/inspired by games such as <span>R.E.P.O.</span> and <span>Lethal Company</span>, involving procedurally generated levels which contain loot, and your goal is to collect the highest value of loot.
+                </p>
+                <br>
+                <p>
+                    My idea was highly voted, and after we picked our groups, we had a meeting to solidify our objective and what the game will be.
+                </p>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<h3>Group Project 3 – Meeting 1</h3>
+
+<b>Key Points:</b>
+- Testing the team on VR, need a benchmark for motion sickness.
+- Making the game colorblind friendly:
+    • Protanomaly, based on Dom’s colorblindness.
+    • Then can build off of that and make normal color vision.
+
+<b>Gameplay Loop:</b>
+- Being chased by a monster, collect items of value to hit a quota.
+- Collect items of value, then solve puzzles to leave.
+- Timer on each level, collect items of value before the timer runs out.
+- Backpack system, most items can be stored aside from larger items.
+- Weight system, carrying too much can slow you down.
+- Oil lamp for lighting, can be stored on the hip.
+
+<b>Design Choices:</b>
+- Cave-in at <i>pyramid/temple</i>, collect items and leave before cave-in.
+- Could make stylized <i>Tomb Raider</i> design, more polygonal.
+- However, could be bad for UX as it can be <b>bad</b> on the eyes.
+- British Empire setting, <b>grave robbing pyramids for museums</b>.
+- Easter egg items, pics of devs on different items.
+
+<b>Planned Features:</b>
+- <b>Shop will be added on the 2nd iteration:</b>
+    • Item shop for purchasing backpack slots, speed, maps, etc.
+
+<b>Extra Tasks:</b>
+- Hand textures.
+- Extra level.
+- Animated wall insects.
+</pre>
+
+                <p>As per this meeting, we developed the core setting and goal for our game: <i>procedurally generated pyramids, where you enter, collect loot, and leave before time runs out and the pyramid collapses.</i>
+                <br><br>We then collected both visual references and references for the procedural generation algorithm which I would be developing, some of which are shown below.
+                </p>
+                <div class="image-group">
+                    <figure>
+                        <img src="assets/timeheist/refskull.png" alt="Reference 1">
+                        <span class="RefNum"><a href="#references">1.2.1</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/timeheist/procgenref.webp" alt="Reference 2">
+                        <span class="RefNum"><a href="#references">1.2.2</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/timeheist/repopresskit.png" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.2.3</a></span>
+                    </figure>
+                    <figure>
+                        <img src="assets/timeheist/wanderer.jpg" alt="Reference 3">
+                        <span class="RefNum"><a href="#references">1.2.4</a></span>
+                    </figure>
+                </div>
+                <br>
+                <p>The project lead created a Gantt chart to organise what we would be doing for the duration of the project.</p>
+                <img src="assets/timeheist/image.png" style="width: 500px;">
+            </section>
+<br><br>
+            <section>
+                <h2>1.3 Tools and Software</h2>
+
+                <h3>Unity</h3>
+                <p>Unity is the game engine we chose to use, due to its familiarity and stength of 2D tools and workflow</p>
+                
+                <h3>Discord</h3>
+                <p>Discord is an online instant messaging and group chat application, this is what we used mainly to communicate and share ideas</p>
+            </section>
+<br><br>
+            <h1>Section 2 | Programming</h1>
+            <section>
+                <h2>1.4 Room Generation</h2>
+                <video autoplay loop muted playsinline style="width: 800px; border-radius: 8px; margin: 20px 0;">
+                    <source src="assets/timeheist/gendemo.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+                <p style="color: rgb(91, 95, 105);">(above shows an older version of the generation, there are some collision issues present)</p>
+                <br>
+                <p>Before I began programming, I setup a new Unity project, installed all the necessary packages and created a <span>GitHub</span> repository to use as my version control software.
+                This Unity project was <b>completely separate</b> to the main <span>Time Heist</span> project, as I wanted the generator to be available separately on its own (V1 available on my GitHub).
+                </p>
+                <br>
+                <h3>Goal</h3>
+                <p>The goal for the procedural generation is relatively simple: have multiple prefabs for rooms and hallways, which connect together seamlessly to generate an interesting level.
+                    <br><br>
+                    To achieve this, I researched many different procedural generation algorithms, some of which involved <span>pathfinding</span>, and some of which involved <span>randomness</span>.
+                    <br>
+                    At the end, I found a video tutorial about a procedural dungeon system in <span>Unreal Engine 5</span> by <a href="https://www.youtube.com/@REE-Animation">REE Animation</a>, which seemed to be a good base for what I needed. <br> However, our game is developed
+                    in <span>Unity</span>, so I couldn't simply take and re-use the original code, I had to learn how the generation worked, and write my own <span>C#</span> code which worked around these principles.
+                </p>
+                <br>
+    <div style="position: relative; overflow: hidden; border-radius: 8px;">
+        <iframe src="https://www.youtube.com/embed/4ddbnQIuwAM" 
+                frameborder="0" 
+                allowfullscreen 
+                style="width: 600px; height: 338px;">
+        </iframe>
+    </div>
+    <br>
+    <span class="RefNum"><a href="#references">1.4.1</a></span>
+    <br>
+<pre>
+<code class="language-csharp">private static Dictionary<Vector2, GameObject> occupiedPositions = new Dictionary<Vector2, GameObject>();
+
+public static void OccupyPosition(Vector2 position, GameObject obj)
+{
+    occupiedPositions[position] = obj;
+}   
+</code></pre>
+
+<p>I implemented a persistent currency manager using the <span>singleton pattern</span> to ensure only one instance exists across scenes. This system centralizes coin tracking, automatically updates the UI on value changes, and broadcasts coin balance updates via an event system (<span>OnBalanceUpdated</span>). It includes methods to set, spend, and retrieve the coin count, ensuring clean integration with other systems like the game UI. This approach provides modularity and scalability.</p>
+<br>
+<section>
+    <h2>1.5 Reflection</h2>
+    <p>Development of Cats and Frogs ran mostly smoothly. I kept pace with the schedule that I had planned for myself, and achieved the majority of my goals to a reasonable standard. When it came time to present our game, my tutor referred to it as a "medium-fidelity final product"
+        <br><br>
+        This shows that we successfully developed a working tower-defense game for Android devices that performs well on real hardware and is a fully playable game. Whilst we achieved what the brief required of us, there are a lot of improvements that could've been made along the way.
+    </p>
+    <br>
+    <h3>Limitations/Failures</h3>
+    <br>
+    <p>As with all development projects, some things didn't go as planned, and are a valuable learning experience.
+        <br><br>
+        Being a solo developer entirely eliminates the problem of poor communication, which is a positive. However, it also led to a lot of poor code organisation, as well as rushing some key features. This is in part due to the high workload as the sole developer, but also
+        due to poor planning of systems and their interactions, due to lack of experience. This led to a lot of technical debt, meaning that it would be unecessarily difficult to expand on this game to completely polish and finish it, as some systems would ideally be completely rewritten and re-thought-out.
+        <br><br>
+        The art team were not fully aware of exactly what sprites and images were needed at what time. This led to me having to create some prototype artwork for the UI - this led to a lack of focus and a lack of time - contributing to the somewhat rushed systems. This could have been prevented with better inter-team communication.
+        <br><br>
+        A personal failure of mine is that I spent too long working on the drag and drop system. Whilst it is vital to the game, so having a rigid drag and drop system is very important, I could have used an asset from the Unity Asset store instead, and spent more time working
+        on the bespoke systems, both refining them and creating more in-depth gameplay.
+        <br><br>
+        The prototype focused on core mechanics, lacking advanced features such as more varied enemy types/classes or power-ups. UI elements could benefit from enhanced visual feedback and animations.
+        <br><br>
+        The majority of the shortcomings of Cats and Frogs boil down to poor planning and poor time management, which is something I need to work on for future projects. It is entirely possible to fix these issues in Cats and Frogs, and allow for it to be expanded into a full-fledged game, by reworking the core systems from the ground up. Despite this, the project reached its goals in the allotted time.
+        <br><br>
+        Based on these limitations I think a further 6 weeks of focused development time left would be enough to make everything functional and scalable, as intended. I also think that a further 1-2 weeks on top of that would be necessary if we
+        want the game to have significant polish.
+        <br><br>
+        Areas I need to research include UI and UX design for mobile games, as well as mobile performance optimisation and profiling. This would allow me to design intuitive and engaging interfaces specifically tailored for mobile platforms, and ensure that my games can run
+        smoothly on even low-end devices, and I can use that knowledge of memory management and efficient rendering techniques in all aspects of gamedev.
+        <br><br>
+        Further, I definitely need to research into system planning. Effective system planning ensures that a game's mechanics are not only cohesive and functional, but easier to build on top of and add new features. This would have helped in this project as I would have been able to add all the planned enemy types, such as long-ranged Wizard Frogs, and bosses with special attacks.
+    </p>
+</section>
+<br>
+<img src="assets/catsandfrogs/GameDemoFull.gif" alt="Final Demo" style="width: 500px; border-radius: 8px; margin: 20px 0;">
+<br>
+
+<section>
+<h2>1.6 Further Development</h2>
+<p>Following my reflection, I have outlined a plan that I could follow to rework the game from the ground up:</p>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+    <b>Sprint 1:</b>
+    -	Strip game down to its core mechanics, preserving best-performing scripts
+    -   Replace Touch Handling with a more optimised premade asset
+    -   Redesign and rewrite grid system for performance
+    -   Rewrite placement system to make more intuitive
+    <b>Sprint 2:</b>
+    -	Using the new grid and placement, rewrite the shop spawning to be controlled by a single manager
+    -   Rework player and Enemy Controllers
+    -   Rewrite attack system
+    <b>Sprint 3:</b>
+    -	Polish up previous scripts
+    -   Create all new types of entities
+    -   Polish UI
+</pre>
+</section>
+
+<br>
+
+<section>
+<h2>1.7 Key Tasks & Dependencies</h2>
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
+<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before background elements can be added.
+<br>
+<b>Shop System: </b>Must be entirely reworked before expanding scope, as it is very hard to build upon right now.
+<br>
+<b>Animations: </b>I could not get sprite animations working correctly, this needs to be fixed before the game can be considered polished.
+</pre>
+</section>
+
+<br>
+
+<section class="references" id="references">
+    <h3>References</h3>
+    <br>
+    <p>[1.2.1] How to Make a Pixel Art Frog (2023). [Art]. Go Real Games, LLC. Retrieved from <a href="https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/">https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/</a></p>
+    <br>
+    <p>[1.2.2] Pixel Art Top Down - Basic. [Art]. Cainos. Retrieved from <a href="https://cainos.itch.io/pixel-art-top-down-basic">https://cainos.itch.io/pixel-art-top-down-basic/</a></p>
+    <br>
+    <p>[1.2.4] This is Pixel Art 32 (2024). [Art]. The_PixelPrysm. Retrieved from <a href="https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/">https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/</a></p>
+    <br>
+</section>
+
+</article>
+</main>
+</body>
+</html>

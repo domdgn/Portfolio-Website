@@ -43,7 +43,7 @@
                 <p><span>Date Started:</span> April 2025</p>
                 <p><span>My Role:</span> Developer</p>
                 <p><span>Software Used:</span> Unity, C#</p>
-                <img src="images/CatsandFrogsCover.jpg" alt="Project Overview" class="finalimg">
+                <img src="images/placeholder.jpg" alt="Project Overview" class="finalimg">
                  <br>
                 <!-- <iframe style="box-shadow: 0 10px 50px #010d13; border-radius: 8px;" frameborder="0" src="https://itch.io/embed-upload/13561435?color=333333" allowfullscreen="" width="360" height="660"><a href="https://domdgn.itch.io/cats-and-frogs">Play Cats and Frogs on itch.io</a></iframe> -->
                 <h3><a href="https://github.com/domdgn/VR-Dungeon-Game/releases/download/exhibition-demo/TimeHeistExhibitionBuild.apk">Download APK (for Meta Quest)</a></h3>
@@ -144,16 +144,11 @@
                 <h3>Discord</h3>
                 <p>Discord is an online instant messaging and group chat application, this is what we used mainly to communicate and share ideas</p>
             </section>
-<br><br>
+<br><br><br>
             <h1>Section 2 | Programming</h1>
             <section>
                 <h2>1.4 Room Generation</h2>
-                <video autoplay loop muted playsinline style="width: 800px; border-radius: 8px; margin: 20px 0;">
-                    <source src="assets/timeheist/gendemo.webm" type="video/webm">
-                    Your browser does not support the video tag.
-                </video>
-                <p style="color: rgb(91, 95, 105);">(above shows an older version of the generation, there are some collision issues present)</p>
-                <br>
+                <img src="assets/timeheist/key.png" style="width: 750px;">
                 <p>Before I began programming, I setup a new Unity project, installed all the necessary packages and created a <span>GitHub</span> repository to use as my version control software.
                 This Unity project was <b>completely separate</b> to the main <span>Time Heist</span> project, as I wanted the generator to be available separately on its own (V1 available on my GitHub).
                 </p>
@@ -177,17 +172,117 @@
     <br>
     <span class="RefNum"><a href="#references">1.4.1</a></span>
     <br>
+    <p>
+        Due to information from both this video and others, I decided that I want my generator to <span>randomly</span> place room prefabs connected to manually defined 'EntryPoints' in a convincingly seamless manner. 
+        <br><br>
+        As such, my generator follows this basic order of operations:
+        <br><br>
+        The <span>DungeonGenerator</span> script in Unity procedurally generates a dungeon layout by starting from a predefined 
+  <span>startRoom</span> and expanding it with rooms and hallways from a selected <span>LevelSO</span> Scriptable Object. 
+  It randomly picks a level configuration, then repeatedly places new room prefabs by aligning their unconnected entry 
+  points with those of existing rooms. Proper alignment is handled using rotation and position offsets, while overlap is 
+  checked using colliders to ensure valid placement. Successfully placed rooms are added to the dungeon until a maximum 
+  room count is reached. Once generation is complete, unconnected entry points are sealed with closed doors, and items 
+  are spawned using an attached <span>ItemSpawner</span> component. <span>UnityEvents</span> are used to signal the start 
+  and completion of dungeon generation, allowing for easy integration with other systems.
+    </p>
+    <img src="assets/timeheist/entry.webp" style="width: 500px;">
+    <p>Entry Points are placed manually in the Unity Editor, with the <span>Local Z-axis</span> always pointing outwards to ensure correct rotation.</p>
+    <br><br>
+    <h3 class="responsibilities">- Dungeon Initialisation -</h3>
+    <br>
+    <p>Handles the initial setup of the dungeon by selecting a random level configuration, clearing previous data, and starting the asynchronous dungeon generation process. Utilises UnityEvents to notify when generation starts and prevents overlapping generation calls.</p>
 <pre>
-<code class="language-csharp">private static Dictionary<Vector2, GameObject> occupiedPositions = new Dictionary<Vector2, GameObject>();
-
-public static void OccupyPosition(Vector2 position, GameObject obj)
+<code class="language-csharp">public void ResetDungeon()
 {
-    occupiedPositions[position] = obj;
-}   
-</code></pre>
+    if (activelyGenerating == false)
+    {
+        activelyGenerating = true;
+        onGenerationStarted.Invoke();
 
-<p>I implemented a persistent currency manager using the <span>singleton pattern</span> to ensure only one instance exists across scenes. This system centralizes coin tracking, automatically updates the UI on value changes, and broadcasts coin balance updates via an event system (<span>OnBalanceUpdated</span>). It includes methods to set, spend, and retrieve the coin count, ensuring clean integration with other systems like the game UI. This approach provides modularity and scalability.</p>
+        ClearLevel();
+        itemSpawner.DeleteAllItems();
+
+        if (levels.Count > 0)
+        {
+            levelData = levels[Random.Range(0, levels.Count)];
+            Debug.Log(levelData.levelName + "level selected");
+        }
+
+        SetUpLevelData(levelData);
+        StartCoroutine(GenerateDungeon());
+    }
+    else Debug.LogWarning("Dungeon is already generating!");
+}
+</code>
+</pre>
+    <br>
+    <h3 class="responsibilities">- Room Placement -</h3>
+    <br>
+    <p>Controls the core logic for placing new rooms or hallways by selecting appropriate prefabs based on randomised probabilities, then prepares to connect these new rooms to existing ones through available entry points.</p>
+<pre>
+<code class="language-csharp">IEnumerator PlaceNextRoom()
+{
+    GameObject sourceRoom = placedRooms[Random.Range(0, placedRooms.Count)];
+
+    if (levelData == null)
+    {
+        roomPrefabToPlace = masterPrefab;
+    }
+    else
+    {
+        if (Random.value < currentHallwayChance)
+        {
+            roomPrefabToPlace = levelData.hallwayPrefabs[Random.Range(0, levelData.hallwayPrefabs.Count)];
+            currentHallwayChance = hallwayChance * sequentialHallwayChanceMulti;
+        }
+        else
+        {
+            roomPrefabToPlace = levelData.roomPrefabs[Random.Range(0, levelData.roomPrefabs.Count)];
+            currentHallwayChance = hallwayChance;
+        }
+    }
+
+    // ...connection and transform alignment logic
+}
+</code>
+</pre>
+    <br>
+    <h3 class="responsibilities">- Room Alignment -</h3>
+    <br>
+    <p>Aligns the new room to the existing dungeon layout by matching entry points’ positions and rotations, then checks for spatial overlaps to ensure no rooms collide before finalising placement.</p>
+<pre>
+<code class="language-csharp">Quaternion rotation = Quaternion.FromToRotation(selectedNewEntry.forward, -selectedSourceEntry.forward);
+roomToSpawn.transform.rotation = rotation;
+
+FixUpsideDown(roomToSpawn);
+
+Vector3 entryGlobalPos = roomToSpawn.transform.TransformPoint(selectedNewEntry.localPosition);
+Vector3 offset = selectedSourceEntry.position - entryGlobalPos;
+roomToSpawn.transform.position = offset;
+
+if (IsRoomOverlapping(roomToSpawn))
+{
+    Destroy(roomToSpawn);
+    yield return null;
+}
+</code>
+</pre>
 <br>
+                <video autoplay loop muted playsinline style="width: 800px; border-radius: 8px;">
+                    <source src="assets/timeheist/gendemo.webm" type="video/webm">
+                    Your browser does not support the video tag.
+                </video>
+<br>
+<h3>Issues & Fixes </h3>
+<p>
+    Whilst my code results in something I am very happy with, and works great for this project, there were some issues I encountered. <br><br> For example,
+    I noticed that occasionally, rooms would spawn <i>upside down</i>. <br> I could not figure out what was going wrong in the room rotation logic to cuase this, <br><br>Therefore, I fixed this by adding the <span>FixUpsideDown</span>(GameObject roomToSpawn) check in the placement logic. <br><br>
+    This detects if a room is upside down by checking if the room's <span>Local Up Vector</span> is aligned with the <span>Global Down Vector</span> by using a <span>Dot Product</span> threshold, and if so, it flips the room by rotating it 180 degrees on the local Z-axis. <br><br> I also encountered an issue where rooms would overlap (this can be seen in the demo gif above, as it is from an older version.) <br><br>
+    I fixed this by implementing a collision detection system in the <span>IsRoomOverlapping</span>(GameObject room) method. <br><br> This uses Unity's <span>Physics.OverlapBox</span> function to check whether the newly spawned room's bounds (scaled slightly smaller to prevent false-positives) intersect with any trigger colliders on the <span>Room Layer</span>, and if so it is destroyed and re-attempted.
+</p>
+
+<br><br><br><br><br><br><br>
 <section>
     <h2>1.5 Reflection</h2>
     <p>Development of Cats and Frogs ran mostly smoothly. I kept pace with the schedule that I had planned for myself, and achieved the majority of my goals to a reasonable standard. When it came time to present our game, my tutor referred to it as a "medium-fidelity final product"

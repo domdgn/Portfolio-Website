@@ -43,9 +43,15 @@
                 <p><span>Date Started:</span> April 2025</p>
                 <p><span>My Role:</span> Developer</p>
                 <p><span>Software Used:</span> Unity, C#</p>
-                <img src="images/placeholder.jpg" alt="Project Overview" class="finalimg">
                  <br>
-                <!-- <iframe style="box-shadow: 0 10px 50px #010d13; border-radius: 8px;" frameborder="0" src="https://itch.io/embed-upload/13561435?color=333333" allowfullscreen="" width="360" height="660"><a href="https://domdgn.itch.io/cats-and-frogs">Play Cats and Frogs on itch.io</a></iframe> -->
+                <iframe src="https://www.youtube.com/embed/91h0U3MuJG8" 
+                frameborder="0" 
+                allowfullscreen 
+                width="1067" 
+                height="600" 
+                style="box-shadow: 0 10px 50px #010d13; border-radius: 8px;">
+                </iframe>
+                <br>
                 <h3><a href="https://github.com/domdgn/VR-Dungeon-Game/releases/download/exhibition-demo/TimeHeistExhibitionBuild.apk">Download APK (for Meta Quest)</a></h3>
                 <span><a href="https://github.com/domdgn/VR-Dungeon-Game/">GitHub</a></span>
             </section>
@@ -432,6 +438,10 @@ private void AddTreasureToList(GameObject item)
     <p>Playtesting allowed us to fine-tune key settings such as <span>player speed</span> and <span>level size</span>. It also uncovered bugs, including <i>holsters not tracking accurately to real-world positions</i> and <i>object damage failing in specific areas</i>, all of which were addressed in preparation for the exhibition.<br><br>
     The most significant issue revealed early on was <span>performance</span>. To tackle this, we lowered light-quality settings considerably and implemented a <span>culling</span> system that disables lights and renderers outside the player’s view, resulting in a dramatic performance boost.<br><br>
     The exhibition provided access to many playtesters, especially first-time VR users. Their feedback highlighted persistent challenges, including difficulties with depth perception and unintuitive controls, which we thoroughly documented for future improvements.</p>
+    <br>
+    <p>
+    We used the <a href="https://www.meta.com/en-gb/experiences/ovr-metrics-tool/2372625889463779/">OVR Metrics Tool</a> to display performance statistics such as <span>FPS</span>, <span>GPU usage</span>, etc. for testing purposes.
+    </p>
 </section>
 
 
@@ -459,7 +469,7 @@ private void AddTreasureToList(GameObject item)
     <p>
         As a whole, the entire team worked great together, and it was by far the most enjoyable team experience yet. We communicated often and well - with a mix of in-person and online meetings, and, overall we understood exactly what was expected of us. There were of course some issues, however nothing disastrous.
         <br><br>
-        One of the more subtle lessons was around scope control. Our original ideas for <span>Time Heist</span> included puzzles, a proper tutorial, and additional gameplay systems such as time-based challenges. We had to cut or simplify many of these features to stay within the project timeline. In future projects, we’ll be more deliberate about breaking down features into modular, testable systems from the beginning.
+        One of the more subtle lessons was around scope control. Our original ideas for <span>Time Heist</span> included puzzles, a proper tutorial, and additional gameplay systems such as a shop. We had to cut or simplify many of these features to stay within the project timeline. In future projects, we’ll be more deliberate about breaking down features into modular, testable systems from the beginning.
     </p>
     <br>
     <h3>Further Development</h3>
@@ -488,57 +498,42 @@ private void AddTreasureToList(GameObject item)
         Overall, <span>Time Heist</span> has laid a strong foundation for me as a developer. It exceeded my expectations and demonstrated what our team is capable of. I'm proud of what we presented at the exhibition — especially winning the <strong>Team Choice (1st Years)</strong> award — and excited to build on this momentum in future projects.
     </p>
 </section>
-
-
-
-<br>
-<img src="assets/catsandfrogs/GameDemoFull.gif" alt="Final Demo" style="width: 500px; border-radius: 8px; margin: 20px 0;">
-<br>
-
-<section>
-<h2>1.6 Further Development</h2>
-<p>Following my reflection, I have outlined a plan that I could follow to rework the game from the ground up:</p>
-<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-    <b>Sprint 1:</b>
-    -	Strip game down to its core mechanics, preserving best-performing scripts
-    -   Replace Touch Handling with a more optimised premade asset
-    -   Redesign and rewrite grid system for performance
-    -   Rewrite placement system to make more intuitive
-    <b>Sprint 2:</b>
-    -	Using the new grid and placement, rewrite the shop spawning to be controlled by a single manager
-    -   Rework player and Enemy Controllers
-    -   Rewrite attack system
-    <b>Sprint 3:</b>
-    -	Polish up previous scripts
-    -   Create all new types of entities
-    -   Polish UI
-</pre>
-</section>
-
-<br>
+<br><br><br>
 
 <section>
 <h2>1.7 Key Tasks & Dependencies</h2>
-<pre style="background: #1e293b; padding: 20px; border-radius: 8px; margin: 40px 0; white-space: pre-wrap;">
-<b>Art: </b>Must be completed before main menu & UI can be polished, before sprite animations can be finalised, and before background elements can be added.
+<pre style="background: #1e293b; padding: 20px; border-radius: 8px; white-space: pre-wrap;">
+<b>Object Interactions: </b>Grabbing and dropping objects was sometimes inconsistent or unresponsive. Needs to be rebuilt to improve player control and physicality.
+
+<b>Onboarding: </b>The current tutorial is just text. Needs expansion before the game is accessible to first-time VR users or playable without guidance.
 <br>
-<b>Shop System: </b>Must be entirely reworked before expanding scope, as it is very hard to build upon right now.
+<b>Performance: </b>Lighting and culling were scaled back to improve framerate. Requires a better-optimised and more scalable solution going forward.
 <br>
-<b>Animations: </b>I could not get sprite animations working correctly, this needs to be fixed before the game can be considered polished.
+<b>Sound Design: </b>Audio feedback is a key part of VR UX, this is needed to support interaction clarity and immersion.
+<br>
+<b>Interaction Feedback: </b>Haptics and visual feedback cues need to be standardised and reinforced across all interactions before the experience feels polished.
 </pre>
 </section>
+
 
 <br>
 
 <section class="references" id="references">
     <h3>References</h3>
     <br>
-    <p>[1.2.1] How to Make a Pixel Art Frog (2023). [Art]. Go Real Games, LLC. Retrieved from <a href="https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/">https://www.megavoxels.com/learn/how-to-make-a-pixel-art-frog/</a></p>
+    <p>[1.2.1] Battle Talent Demo Product Image (2025). [Image]. CyDream. Retrieved from <a href="https://www.altlabvr.com/battle-talent">https://www.altlabvr.com/battle-talent</a></p>
     <br>
-    <p>[1.2.2] Pixel Art Top Down - Basic. [Art]. Cainos. Retrieved from <a href="https://cainos.itch.io/pixel-art-top-down-basic">https://cainos.itch.io/pixel-art-top-down-basic/</a></p>
+    <p>[1.2.2] Procedural Dungeon Generation in Unity 3D. (2022) [Video]. Karsten Pedersen V.2. Retrieved from <a href="https://www.youtube.com/watch?v=j2mjr2lNcAk">https://www.youtube.com/watch?v=j2mjr2lNcAk</a></p>
     <br>
-    <p>[1.2.4] This is Pixel Art 32 (2024). [Art]. The_PixelPrysm. Retrieved from <a href="https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/">https://www.reddit.com/r/PixelArt/comments/1aprcl3/this_is_pixel_art_32/</a></p>
+    <p>[1.2.3] R.E.P.O. Press Kit (2025). [Image]. semiwork. Retrieved from <a href="https://www.igdb.com/games/repo/presskit">https://www.igdb.com/games/repo/presskit</a></p>
     <br>
+    <p>[1.2.4] Youtube Video Thumbnail (2025). [Image]. WhackyCast. Retrieved from <a href="https://www.youtube.com/watch?v=idvzP7LPXLU">https://www.youtube.com/watch?v=idvzP7LPXLU</a></p>
+    <br>
+    <p>[2.1.1] How To Create Epic Procedural Dungeons In Unreal Engine 5 - Part 1 (2024). [Video]. REE Animation. Retrieved from <a href="https://www.youtube.com/watch?v=4ddbnQIuwAM">https://www.youtube.com/watch?v=4ddbnQIuwAM</a></p>
+    <br>
+    <p>Code & Canvas Exhibition. (2025). [LinkedIn]. Code & Canvas. Retrieved from <a href="https://www.linkedin.com/showcase/code-and-canvas-exhibition/">https://www.linkedin.com/showcase/code-and-canvas-exhibition/</a></p>
+    <br>
+    <p><a href="https://www.meta.com/en-gb/experiences/ovr-metrics-tool/2372625889463779/">OVR Metrics Tool</a></p>
 </section>
 
 </article>
